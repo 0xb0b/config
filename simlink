@@ -1,0 +1,10 @@
+#!/bin/bash
+
+basedir=$(pwd)
+
+ln -sf $basedir/.vimrc ~/.vimrc
+
+ln -sf $basedir/.zshrc ~/.zshrc
+ln -sf $basedir/pure.zsh ~/pure.zsh
+
+ln -sf $basedir/.Xresources ~/.Xresources
