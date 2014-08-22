@@ -8,6 +8,9 @@ call vundle#rc()
 
 " let vundle manage vundle
 Bundle 'gmarik/vundle'
+
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
 "-----------------------------
 
 filetype plugin indent on
@@ -17,20 +20,26 @@ syntax on
 " colorscheme solarized
 colorscheme wombat256
 
-" start maximized
 set lines=48 columns=120
 
 " turn on line numbers
 set number
 
 " highlight cursor line
-set cursorline
+"set cursorline
 
-" set line spacing
 set linespace=3
 
-set textwidth=80
-set colorcolumn=+1
+" disable auto wrap
+set textwidth=0
+
+" highlight space after allowed columns range (temporary)
+"let &colorcolumn=join(range(81,335), ",")
+" let basecolor=synIDattr(hlID('Normal'), 'bg#')
+"autocmd ColorScheme * highlight ColorColumn ctermbg=232 guibg=#2c2d27
+autocmd ColorScheme * call matchadd('ColorColumn', '\%81v', 100)
+set nocursorline " performance issue
+
 " set indentation
 set shiftwidth=4
 set tabstop=4
@@ -41,7 +50,7 @@ set softtabstop=4
 set shiftround
 set autoindent
 
-" display current cursor position in the lower left corner ?
+" display current cursor position in the lower left corner?
 " set ruler
 
 if has("gui_running")
@@ -57,7 +66,7 @@ else
     " configure cursor to differ in insert/other mode
     if &term =~ '^xterm'
         let &t_SI .= "\<Esc>[3 q"
-        let &t_EI .= "\<Esc>[2 q"
+        let &t_EI .= "\<Esc>[1 q"
         " 1 or 0 -> blinking block
         " 2 -> solid block
         " 3 -> blinking underscore

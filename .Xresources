@@ -36,8 +36,8 @@
 ! the color assignment statement with its name. Example:
 ! URxvt*background: S_base03
 
-*background: #080808
-*foreground: S_base0
+xterm*background: rgb:08/08/08
+xterm*foreground: S_base0
 *fading: 40
 *fadeColor: S_base03
 *cursorColor: S_base1
