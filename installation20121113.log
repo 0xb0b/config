@@ -1,0 +1,263 @@
+# Initial network configuration:
+$ lspci | grep -i net
+Intel wifi link 1000 bgn, driver: iwlwifi
+
+$ ip link set wlan0 up
+$ rfkill list all
+$ iwlist wlan0 scan | less
+
+$ wpa_passphrase "<ssid>" "<password>" >> /etc/wpa_supplicant.conf
+
+# /etc/wpa_supplicant.conf:
+    ctrl_interface=DIR=/run/wpa_supplicant GROUP=wheel
+    ap_scan=1
+    fast_reauth=1
+
+    network={
+    	ssid="xdragon"
+	    psk=248b...
+        proto=RSN
+        pairwise=TKIP CCMP
+        group=TKIP
+        auth_alg=OPEN
+    }
+
+$ wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant.conf
+$ iwconfig wlan0
+
+# /etc/dhcpcd.conf:
+:
+:
+nooption domain_name_servers
+
+/etc/resolv.conf.head:
+    # Google DNS
+    nameserver 8.8.8.8
+    nameserver 8.8.4.4
+
+$ dhcpcd wlan0 
+
+
+# Partitioning:
+$ cfdisk /dev/sda
+
+$ mkfs.ext4 /dev/sda<n>
+
+$ mount /dev/sda2 /mnt
+$ mkdir /mnt/boot
+$ mount /dev/sda1 /mnt/boot
+$ mkdir /mnt/var
+$ mount /dev/sda3 /mnt/var
+$ mkdir /mnt/home
+$ mount /dev/sda4 /mnt/home
+
+$ lsblk /dev/sda
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 465.8G  0 disk 
+├─sda1   8:1    0 125.5M  0 part /boot
+├─sda2   8:2    0  30.5G  0 part /
+├─sda3   8:3    0  15.3G  0 part /var
+└─sda4   8:4    0 419.9G  0 part /home
+
+$ lsblk -f /dev/sda
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sda                                                      
+├─sda1 ext4         2068c198-2fc8-4ea7-9bfa-895d5a1ca3ef /boot
+├─sda2 ext4         7e789392-ff56-4514-8272-35f5cc2c2b6e /
+├─sda3 ext4         b16d2f38-62d8-49dc-a987-621692895d5e /var
+└─sda4 ext4         d355f301-636c-430a-b130-ba32e90b7f61 /home
+
+
+# Install base system:
+$ pacstrap -i /mnt base base-devel
+# pacman log in /var/log/pacman.log
+
+
+# Configure system:
+$ genfstab -U -p /mnt >> /mnt/etc/fstab
+# edit: 
+root dump pass: 
+        0 1
+codepage=437 (not cp437)
+
+$ arch-chroot /mnt
+
+
+#network configuration:
+    $ cp <network configuration files> /mnt/etc/<...>
+    $ pacman -Syy
+    $ pacman -S wireless_tools iw wpa_supplicant
+    # enable auto start with systemd:
+        /etc/systemd/system/network.service:
+        [Unit]
+        Description=Network Connectivity
+        Wants=network.target
+        Before=network.target
+        [Service]
+        Type=oneshot
+        RemainAfterExit=yes
+        ExecStart=/sbin/ip link set dev wlan0 up
+        ExecStart=/usr/sbin/wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant.conf
+        ExecStart=/sbin/dhcpcd wlan0
+        [Install]
+        WantedBy=multi-user.target
+    $ systemctl enable network.service
+
+
+$ nano /etc/locale.gen  # uncomment lines
+$ locale-gen
+$ echo LANG=en_US.UTF-8 > /etc/locale.conf
+$ export LANG=en_US.UTF-8
+
+$ nano /etc/vconsole.conf
+FONT=Lat2-Terminus16
+
+# load video driver before any boot hooks for vconsole.conf to work:
+$nano /etc/mkinitcpio.conf:
+    :
+    #     MODULES="piix ide_disk reiserfs"
+    MODULES="i915"  ! Intel graphics
+    :
+
+$ mkinitcpio -p linux
+
+# Time:
+# install NTP (Network Time Protocol) service and configure NTP daemon
+# ntp or chrony
+$ pacman -S chrony
+# /etc/chrony.conf:
+    :
+    server 0.europe.pool.ntp.org minpoll 8
+    server 1.europe.pool.ntp.org minpoll 8
+    server 2.europe.pool.ntp.org minpoll 8
+    server 3.europe.pool.ntp.org minpoll 8
+
+$ systemctl enable chrony.service
+$ ln -s /usr/share/zoneinfo/Europe/Kiev /etc/localtime
+$ hwclock --systohc --utc
+$ timedatectl status  # after reboot
+
+
+$ echo <hostname> /etc/hostname
+
+$ passwd
+$ adduser  # optional, # userdel -r <user> to start over
+
+# bootloader:
+$ pacman -S grub-bios
+$ grub-install --target=i386-pc --recheck /dev/sda
+$ cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
+$ grub-mkconfig -o /boot/grub/grub.cfg
+
+# reboot:
+$ exit
+$ umount /mnt/{boot,var,home}
+$ umount /mnt
+$ reboot  # remove installation media!
+
+
+#Swap file:
+$ fallocate -l 4G /swapfile
+$ chmod 600 /swapfile
+$ mkswap /swapfile
+$ swapon /swapfile
+
+# /etc/fstab:
+    :
+    /swapfile  none  swap  defaults  0 0
+
+# /etc/sysctl.conf:
+    :
+    vm.vfs_cache_pressure=50
+    vm.laptop_mode=1  # minimize hdd spin
+    vm.swappiness=20  # swap when RAM usage is 80% ?
+
+# fstab:
+# normal disk options: defaults, relatime
+
+
+sound:
+-----
+$ pacman -S alsa-utils
+$ reboot
+$ alsamixer  # unmute
+$ speaker-test -c 2  # may need reboot
+
+
+
+X server:
+--------
+# pacman -S xorg-server xorg-xinit xorg-server-utils
+# pacman -S xterm
+# pacman -S mesa
+# pacman -S xf86-video-intel  ! video driver
+! enable multilib for 32bit apps - uncomment in /etc/pacman.conf
+# pacman -S lib32-intel-dri
+
+! configure intel video for SNA acceleration
+! results in better performance and no tearing (at least in dwm)
+/etc/X11/xorg.conf.d/20-intel.conf:
+Section "Device"
+   Identifier  "Intel Graphics"
+   Driver      "intel"
+   Option      "AccelMethod"  "sna"
+   Option      "TearFree"  "true"
+EndSection
+
+! configure keyboard in X
+make config file (keyboard layouts, disable CAPS_lock):
+/etc/X11/xorg.conf.d/90-keyboard.conf  ! X applies config by number, less first
+
+
+
+! set PACKAGER var in /etc/makepkg.conf to identify pckgs built by user
+dwm:
+---
+# pacman -S abs  ! Arch Build System
+# abs community/dwm 
+! login and run following as user (must be in sudoers)
+# mkdir /home/xbob/proj/dwm
+# cp -r /var/abs/community/dwm /home/xbob/proj
+# cd /home/xbob/proj/dwm
+# makepkg -i
+
+
+
+Internet:
+--------
+# pacman -S firefox
+# pacman -S flashplugin  ! not supported by fcking adobe for linux
+
+Google chrome:
+-------------
+! chrome flash plugin is maintained by google
+! packages from AUR
+! chown /var/abs/local to build pckgs there
+! download and unpack into /abs/local
+# cd /var/abs/local/google-chrome/
+# makepkg -s
+# pacman -U google-chrome....pkg.tar.xz
+! install any dependencies (openssl098)
+
+
+
+Laptop features:
+---------------
+# pacman -S acpi acpid
+
+! set brightness at startup:
+make setting script: /usr/lib/systemd/scripts/setlight.sh
+make service: /usr/lib/systemd/system/setlight.service
+# systemctl enable setlight.service
+
+! Fn keys don't work out of the box 
+! simulate through acpid
+acpid listens to ACPI events and executes script
+acpid configuration files:
+/etc/acpi/backlight.sh -- script for brightness control
+/etc/acpi/events/ac_adapter -- plug/unplug event
+/etc/acpi/events/brightness -- Fn brightness keypress event
+
+! KDE screen brightness setting may conflict with systemd/acpid
+# systemctl disable setlight.service
+! remove plug/unplug event from acpid
