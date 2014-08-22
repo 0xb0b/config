@@ -65,7 +65,14 @@ else
     " terminal
     " configure cursor to differ in insert/other mode
     if &term =~ '^xterm'
-        let &t_SI .= "\<Esc>[3 q"
+        " use red cursor
+        let &t_SI = "\<Esc>]12;red\x7"
+        let &t_EI = "\<Esc>]12;red\x7"
+        silent !echo -ne "\033]12;red\007"
+        " reset cursor when vim exits
+        " use \003]12;gray\007 for gnome-terminal
+        autocmd VimLeave * silent !echo -ne "\033]112\007"
+        let &t_SI .= "\<Esc>[5 q"
         let &t_EI .= "\<Esc>[1 q"
         " 1 or 0 -> blinking block
         " 2 -> solid block
