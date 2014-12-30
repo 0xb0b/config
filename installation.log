@@ -142,6 +142,24 @@ other partitions 0 2
 > reboot now  # remove installation media!
 
 
+# SSD
+> systemctl enable fstrim.timer
+> echo noop > /sys/block/sda/queue/scheduler
+
+
+# X server:
+> pacman -S xf86-video-intel mesa lib32-mesa-libgl
+> pacman -S xorg-server xorg-xinit xorg-server-utils
+
+# pacman -S xterm
+
+! configure keyboard in X
+make config file (keyboard layouts, disable CAPS_lock):
+/etc/X11/xorg.conf.d/90-keyboard.conf  ! X applies config by number, less first
+
+
+
+
 
 
 
@@ -162,6 +180,7 @@ other partitions 0 2
 
 
 
+
 sound:
 -----
 $ pacman -S alsa-utils
@@ -171,28 +190,6 @@ $ speaker-test -c 2  # may need reboot
 
 
 
-X server:
---------
-# pacman -S xorg-server xorg-xinit xorg-server-utils
-# pacman -S xterm
-# pacman -S mesa
-# pacman -S xf86-video-intel  ! video driver
-! enable multilib for 32bit apps - uncomment in /etc/pacman.conf
-# pacman -S lib32-intel-dri
-
-! configure intel video for SNA acceleration
-! results in better performance and no tearing (at least in dwm)
-/etc/X11/xorg.conf.d/20-intel.conf:
-Section "Device"
-   Identifier  "Intel Graphics"
-   Driver      "intel"
-   Option      "AccelMethod"  "sna"
-   Option      "TearFree"  "true"
-EndSection
-
-! configure keyboard in X
-make config file (keyboard layouts, disable CAPS_lock):
-/etc/X11/xorg.conf.d/90-keyboard.conf  ! X applies config by number, less first
 
 
 
