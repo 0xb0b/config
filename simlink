@@ -2,27 +2,28 @@
 
 basedir=$(pwd)
 
-ln -sf $basedir/.vimrc ~/.vimrc
+#ln -sf $basedir/.vimrc ~/.vimrc
 
-ln -sf $basedir/.zshrc ~/.zshrc
-ln -sf $basedir/pure.zsh ~/pure.zsh
+#ln -sf $basedir/.zshrc ~/.zshrc
+#ln -sf $basedir/pure.zsh ~/pure.zsh
 
 ln -sf $basedir/.Xresources ~/.Xresources
+ln -sf $basedir/.xinitrc ~/.xinitrc
 
-sudo ln -sf $basedir/90-keyboard.conf /etc/X11/xorg.conf.d/90-keyboard.conf 
+#sudo ln -sf $basedir/90-keyboard.conf /etc/X11/xorg.conf.d/90-keyboard.conf 
 
-sudo ln -sf $basedir/locale.conf /etc/locale.conf 
+#sudo ln -sf $basedir/locale.conf /etc/locale.conf 
 
-sudo ln -sf $basedir/vconsole.conf /etc/vconsole.conf 
+#sudo ln -sf $basedir/vconsole.conf /etc/vconsole.conf 
 
-sudo ln -sf $basedir/mkinitcpio.conf /etc/mkinitcpio.conf 
+#sudo ln -sf $basedir/mkinitcpio.conf /etc/mkinitcpio.conf 
 
-sudo ln -sf $basedir/chrony.conf /etc/chrony.conf 
+#sudo ln -sf $basedir/chrony.conf /etc/chrony.conf 
 
-sudo ln -sf $basedir/99-sysctl.conf /etc/sysctl.d/99-sysctl.conf 
+#sudo ln -sf $basedir/99-sysctl.conf /etc/sysctl.d/99-sysctl.conf 
 
-sudo ln -sf $basedir/wpa_supplicant.conf /etc/wpa_supplicant.conf 
+#sudo ln -sf $basedir/wpa_supplicant.conf /etc/wpa_supplicant.conf 
 
-sudo ln -sf $basedir/dhcpcd.conf /etc/dhcpcd.conf 
+#sudo ln -sf $basedir/dhcpcd.conf /etc/dhcpcd.conf 
 
-sudo ln -sf $basedir/20-intel.conf /etc/X11/xorg.conf.d/20-sysctl.conf 
+#sudo ln -sf $basedir/20-intel.conf /etc/X11/xorg.conf.d/20-sysctl.conf 

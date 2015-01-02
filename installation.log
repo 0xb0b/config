@@ -151,18 +151,22 @@ other partitions 0 2
 > pacman -S xf86-video-intel mesa lib32-mesa-libgl
 > pacman -S xorg-server xorg-xinit xorg-server-utils
 
+
+# desktop environment:
+# install sound: alsa, pulseaudio
+# install openbox
+# configure .Xresources for HiDPI screen
+# install urxvt
+# install ttf fonts
+
+
+
+
 # pacman -S xterm
 
 ! configure keyboard in X
 make config file (keyboard layouts, disable CAPS_lock):
 /etc/X11/xorg.conf.d/90-keyboard.conf  ! X applies config by number, less first
-
-
-
-
-
-
-
 
 
 # install NTP (Network Time Protocol) service and configure NTP daemon
@@ -179,18 +183,12 @@ make config file (keyboard layouts, disable CAPS_lock):
 > timedatectl status  # after reboot
 
 
-
-
 sound:
 -----
 $ pacman -S alsa-utils
 $ reboot
 $ alsamixer  # unmute
 $ speaker-test -c 2  # may need reboot
-
-
-
-
 
 
 ! set PACKAGER var in /etc/makepkg.conf to identify pckgs built by user
@@ -203,7 +201,6 @@ dwm:
 # cp -r /var/abs/community/dwm /home/xbob/proj
 # cd /home/xbob/proj/dwm
 # makepkg -i
-
 
 
 Internet:
