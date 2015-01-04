@@ -18,4 +18,4 @@ bindkey -v
 # no duplicate lines in history
 setopt HIST_IGNORE_DUPS
 
-
+source prompt.zsh
