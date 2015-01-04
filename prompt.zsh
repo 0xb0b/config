@@ -31,4 +31,4 @@ zstyle ':vcs_info:git*' formats "%{$fg[yellow]%}%b%{$reset_color%}"
 
 setopt prompt_subst
 
-PROMPT="$userathost $current_path `git_dirty` $vcs_info_msg_0_\n$prompt_symbol "
+PROMPT="$userathost::$current_path `git_dirty`${vcs_info_msg_0_}\n$prompt_symbol "
