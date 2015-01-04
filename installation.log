@@ -122,12 +122,11 @@ other partitions 0 2
 > useradd -m -G wheel -s /usr/bin/zsh xbob
 > passwd xbob
 
-# change shel for root also
+# change shell for root also
 > chsh -s /usr/bin/zsh
 
 # uncomment %wheel ALL=(ALL) ALL
 > EDITOR=nano visudo
-
 
 # bootloader:
 > pacman -S grub
@@ -158,7 +157,14 @@ other partitions 0 2
 # configure .Xresources for HiDPI screen
 # install urxvt
 # install ttf fonts
+# install firefox
+    install gst-libav gst-plugins-good for H.264 support
+    shumway extension for flash
+    about:config:
+        set media.mediasource.enabled parameter
+        HiDPI support: set layout.css.devPixelsPerPx to 2
 
+# configure zsh
 
 
 
