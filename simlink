@@ -4,9 +4,11 @@ basedir=$(pwd)
 
 #ln -sf $basedir/.vimrc ~/.vimrc
 
-#ln -sf $basedir/.zshrc ~/.zshrc
-#ln -sf $basedir/pure.zsh ~/pure.zsh
+# zsh
+ln -sf $basedir/.zshrc ~/.zshrc
+ln -sf $basedir/prompt.zsh ~/prompt.zsh
 
+# X server
 ln -sf $basedir/.Xresources ~/.Xresources
 ln -sf $basedir/.xinitrc ~/.xinitrc
 

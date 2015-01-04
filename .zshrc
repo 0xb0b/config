@@ -1,6 +1,7 @@
+# Created by newuser for 5.0.7
 # The following lines were added by compinstall
 
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle :compinstall filename '/home/xbob/.zshrc'
 
 autoload -Uz compinit
@@ -10,8 +11,11 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=1024
 SAVEHIST=1024
-setopt autocd extendedglob
+setopt autocd
+bindkey -v
 # End of lines configured by zsh-newuser-install
 
-. ~/pure.zsh
+# no duplicate lines in history
+setopt HIST_IGNORE_DUPS
+
 
