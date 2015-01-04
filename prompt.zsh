@@ -26,6 +26,7 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
 precmd() {
     vcs_info
+	print ""
 }
 zstyle ':vcs_info:git*' formats "%{$fg[yellow]%}%b%{$reset_color%}"
 
