@@ -24,13 +24,15 @@ prompt_symbol='%{$fg_bold[red]%}>%{$reset_color%}%b'
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
+zstyle ':vcs_info:git*' formats "%{$fg[yellow]%}%b%{$reset_color%}"
+
 precmd() {
     vcs_info
+	local preprompt="$userathost::$current_path `git_dirty`$vcs_info_msg_0_"
 	print ""
+	print -P $preprompt
 }
-zstyle ':vcs_info:git*' formats "%{$fg[yellow]%}%b%{$reset_color%}"
 
 setopt prompt_subst
 
-PROMPT="$userathost::$current_path `git_dirty`${vcs_info_msg_0_}
-$prompt_symbol "
+PROMPT="$prompt_symbol "
