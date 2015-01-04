@@ -18,7 +18,7 @@ autoload -U colors && colors
 # show username in red if root
 [[ $UID -eq 0 ]] && userathost='%{$fg[red]%}%n%{$reset_color%}@%m' || userathost='%n@%m'
 
-current_path='%{$fg[yellow]%}%~%{$reset_color%}'
+current_path='%{$fg[green]%}%~%{$reset_color%}'
 
 prompt_symbol='%{$fg_bold[red]%}>%{$reset_color%}%b'
 
@@ -31,4 +31,5 @@ zstyle ':vcs_info:git*' formats "%{$fg[yellow]%}%b%{$reset_color%}"
 
 setopt prompt_subst
 
-PROMPT="$userathost::$current_path `git_dirty`${vcs_info_msg_0_}\n$prompt_symbol "
+PROMPT="$userathost::$current_path `git_dirty`${vcs_info_msg_0_}
+$prompt_symbol "
