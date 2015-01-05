@@ -23,7 +23,7 @@ eval PROMPT_COLOR='%{$fg_bold[red]%}'
 # show username in red if root
 [[ $UID -eq 0 ]] && userathost='%{$fg[red]%}%n@$USERNAME_COLOR%m%{$reset_color%}' || userathost="$USERNAME_COLOR%n@%m%{$reset_color%}"
 
-current_path='$PATH_COLOR%~%{$reset_color%}'
+current_path='$PATH_COLOR${PWD/#$HOME/~}%{$reset_color%}'
 
 prompt_symbol='$PROMPT_COLOR>%{$reset_color%}%b'
 
