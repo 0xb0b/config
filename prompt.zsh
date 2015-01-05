@@ -9,7 +9,7 @@ git_dirty() {
   [[ "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" == "true" ]] || return
 	# check if it's dirty
 	command test -n "$(git status --porcelain --ignore-submodules -uno)"
-	(($? == 0)) && echo '%{$fg[red]%}*%{$reset_color%}' || echo '%{$fg[green]%}*%{%$reset_color%}'
+	(($? == 0)) && echo '%{$fg[red]%}*%{$reset_color%}' || echo '%{$fg[green]%}*%{$reset_color%}'
 }
 
 
