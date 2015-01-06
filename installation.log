@@ -156,6 +156,7 @@ other partitions 0 2
 # install openbox
 # configure .Xresources for HiDPI screen
 # install urxvt
+# configure uxrvt in .Xresources
 # install ttf fonts
 # install firefox
     install gst-libav gst-plugins-good for H.264 support
@@ -163,8 +164,12 @@ other partitions 0 2
     about:config:
         set media.mediasource.enabled parameter
         HiDPI support: set layout.css.devPixelsPerPx to 2
-
 # configure zsh
+# install yaourt
+    install abs
+    chown /var/abs/local/
+# install reflector to update pacman mirrors list
+# configure openbox
 
 
 
