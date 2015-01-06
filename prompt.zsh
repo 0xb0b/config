@@ -16,20 +16,22 @@ git_dirty() {
 autoload -U colors && colors
 
 eval USERNAME_COLOR='%{$fg[blue]%}'
-eval PATH_COLOR='%{$fg[yellow]%}'
+eval ROOT_COLOR='%{$fg[red]%}'
+eval PATH_COLOR='%{$fg[green]%}'
 eval PROMPT_COLOR='%{$fg_bold[red]%}'
 #eval VCS_COLOR='%{$fg[magenta]%}'
+eval RC='%{$reset_color%}'
 
 # show username in red if root
-[[ $UID -eq 0 ]] && userathost='%{$fg[red]%}%n@$USERNAME_COLOR%m%{$reset_color%}' || userathost="$USERNAME_COLOR%n@%m%{$reset_color%}"
+[[ $UID -eq 0 ]] && userathost='$ROOT_COLOR%n$RC%B@%b$USERNAME_COLOR%m$RC' || userathost="$USERNAME_COLOR%n$RC%B@%b$USERNAME_COLOR%m$RC"
 
-current_path='$PATH_COLOR${PWD/#$HOME/~}%{$reset_color%}'
+current_path='$PATH_COLOR${PWD/#$HOME/~}$RC'
 
-prompt_symbol='$PROMPT_COLOR>%{$reset_color%}%b'
+prompt_symbol='$PROMPT_COLOR>$RC%b'
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
-zstyle ':vcs_info:git*' formats "%b%{$reset_color%}"
+zstyle ':vcs_info:git*' formats "%b$RC"
 
 precmd() {
     vcs_info
