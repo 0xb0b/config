@@ -103,6 +103,7 @@ URxvt.internalBorder: 20
 
 
 *fadeColor:     t_background
+*fading:        40
 *.foreground:   #959896
 *.background:   t_background
 *.cursorColor:  #aeafad

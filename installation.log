@@ -153,11 +153,11 @@ other partitions 0 2
 
 # desktop environment:
 # install sound: alsa, pulseaudio
-# install openbox
+# install openbox, lxappearance-obconf
 # configure .Xresources for HiDPI screen
 # install urxvt
 # configure uxrvt in .Xresources
-# install ttf fonts
+# install ttf fonts (dejavu, droid, inconsolata, ubuntu-font-family, adobe-source-code-pro, ttf-junicode(medieval fonts))
 # install firefox
     install gst-libav gst-plugins-good for H.264 support
     shumway extension for flash
@@ -169,7 +169,11 @@ other partitions 0 2
     install abs
     chown /var/abs/local/
 # install reflector to update pacman mirrors list
+# install Apple ttf-mac-fonts from AUR
+# install obmenu-generator (AUR)
 # configure openbox
+# install feh for wallpaper
+# install and configure compton
 
 
 
