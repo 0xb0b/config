@@ -1,7 +1,9 @@
 
 ! fonts rendering
 
-Xft.dpi: 210
+! HiDPI
+! Xft.dpi: 210
+
 Xft.antialias: true
 Xft.hinting: true
 Xft.autohint: false

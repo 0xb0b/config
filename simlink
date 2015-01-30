@@ -29,3 +29,5 @@ ln -sf $basedir/.xinitrc ~/.xinitrc
 #sudo ln -sf $basedir/dhcpcd.conf /etc/dhcpcd.conf 
 
 #sudo ln -sf $basedir/20-intel.conf /etc/X11/xorg.conf.d/20-sysctl.conf 
+
+
