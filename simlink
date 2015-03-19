@@ -12,6 +12,8 @@ ln -sf $basedir/prompt.zsh ~/prompt.zsh
 ln -sf $basedir/.Xresources ~/.Xresources
 ln -sf $basedir/.xinitrc ~/.xinitrc
 
+ln -sf $basedir/.gitconfig ~/.gitconfig
+
 #sudo ln -sf $basedir/90-keyboard.conf /etc/X11/xorg.conf.d/90-keyboard.conf 
 
 #sudo ln -sf $basedir/locale.conf /etc/locale.conf 
