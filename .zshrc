@@ -18,4 +18,10 @@ bindkey -v
 # no duplicate lines in history
 setopt HIST_IGNORE_DUPS
 
+# needed by RubyGems
+GEM_HOME=$(ruby -e 'print Gem.user_dir')
+PATH="$GEM_HOME/bin:$PATH"
+# make Bundler install gems per-user into ~/.gem
+export GEM_HOME
+
 source prompt.zsh
