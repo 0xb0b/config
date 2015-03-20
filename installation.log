@@ -145,6 +145,8 @@ other partitions 0 2
 > systemctl enable fstrim.timer
 > echo noop > /sys/block/sda/queue/scheduler
 
+# uncomment multilib
+> sudo nano /etc/pacman.conf
 
 # X server:
 > pacman -S xf86-video-intel mesa lib32-mesa-libgl
