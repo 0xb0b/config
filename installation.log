@@ -139,6 +139,8 @@ other partitions 0 2
 
 # clone config repo
 
+# install reflector to update pacman mirrors list
+
 # desktop environment:
 # install gnome core packages, gnome terminal, tweak tool
 # gnome extensions:
@@ -173,7 +175,7 @@ other partitions 0 2
     Numix
     Numix-Circle
     UltraFlatIcons
-# install reflector to update pacman mirrors list
+
 
 
 
