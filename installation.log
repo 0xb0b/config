@@ -65,6 +65,7 @@ sda      8:0    0 238.5G  0 disk
         0 1
 other partitions 0 2
 
+# copy config files if made before
 > cp %network_config_file /mnt/etc/%network_config_file
 
 > arch-chroot /mnt
@@ -73,22 +74,6 @@ other partitions 0 2
 > pacman -Syy
 > pacman -S iw wpa_supplicant
 
-# old:
-    # enable auto start with systemd:
-        /etc/systemd/system/network.service:
-        [Unit]
-        Description=Network Connectivity
-        Wants=network.target
-        Before=network.target
-        [Service]
-        Type=oneshot
-        RemainAfterExit=yes
-        ExecStart=/sbin/ip link set dev wlan0 up
-        ExecStart=/usr/sbin/wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant.conf
-        ExecStart=/sbin/dhcpcd wlan0
-        [Install]
-        WantedBy=multi-user.target
-    > systemctl enable network.service
 
 > nano /etc/locale.gen  # uncomment lines
 > locale-gen
@@ -118,7 +103,7 @@ other partitions 0 2
 > echo %hostname /etc/hostname
 > passwd
 
-> pacman -S zsh
+> pacman -S zsh git
 > useradd -m -G wheel -s /usr/bin/zsh xbob
 > passwd xbob
 
@@ -143,7 +128,7 @@ other partitions 0 2
 
 # SSD
 > systemctl enable fstrim.timer
-> echo noop > /sys/block/sda/queue/scheduler
+> echo noop > /sys/block/sda/queue/scheduler (?)
 
 # uncomment multilib
 > sudo nano /etc/pacman.conf
@@ -152,23 +137,34 @@ other partitions 0 2
 > pacman -S xf86-video-intel mesa lib32-mesa-libgl
 > pacman -S xorg-server xorg-xinit xorg-server-utils
 
+# clone config repo
 
 # desktop environment:
-# configure .Xresources for HiDPI screen
-# install ttf fonts (dejavu, droid, inconsolata, ubuntu-font-family, adobe-source-code-pro, ttf-junicode(medieval fonts))
+# install gnome core packages, gnome terminal, tweak tool
+# gnome extensions:
+    Autohide battery
+    Battery percentage
+    Frippery move clock
+    Launch new instance
+    Removable drive menu
+    Remove dropdown arrows
+    Taskbar
+    User themes
+    Windows blur effects
 # install firefox
     install gst-libav gst-plugins-good for H.264 support
-    shumway extension for flash
     about:config:
         set media.mediasource.enabled parameter (video playback)
         HiDPI support: set layout.css.devPixelsPerPx to 2
-# configure zsh
+    shumway extension for flash (?)
 # install yaourt
     install abs
     chown /var/abs/local/
+# install ttf fonts (dejavu, droid, inconsolata, ubuntu-font-family, adobe-source-code-pro, 
+                     anonymous-pro, liberation, monaco, mac-fonts)
 # install reflector to update pacman mirrors list
-# install Apple ttf-mac-fonts from AUR
-# install gnome core packages, gnome terminal, tweak tool
+
+
 
 
 
