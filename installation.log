@@ -162,6 +162,17 @@ other partitions 0 2
     chown /var/abs/local/
 # install ttf fonts (dejavu, droid, inconsolata, ubuntu-font-family, adobe-source-code-pro, 
                      anonymous-pro, liberation, monaco, mac-fonts)
+# install gnome themes
+    Numix
+    Numix_OSX
+    Numix Solarized
+    Ultra-Flat
+# install gnome icons
+    Circle-Flat
+    Flattr
+    Numix
+    Numix-Circle
+    UltraFlatIcons
 # install reflector to update pacman mirrors list
 
 
