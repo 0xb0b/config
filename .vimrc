@@ -6,14 +6,14 @@
 
 set nocompatible
 
-" Turn off and then on after bundles block.
-" vim caches filetype plugins from runtime path and the path is updated by 
+" Turn filetype off and then on after bundles block.
+" vim caches filetype plugins from runtime path and path is updated by 
 " Bundle commands.
 
 filetype off
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp += ~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let vundle manage vundle
@@ -22,7 +22,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 
-" All plugins must be added before the following line
+" All plugins must be added before this line
 call vundle#end()
 
 filetype plugin indent on
@@ -53,14 +53,17 @@ autocmd ColorScheme * call matchadd('ColorColumn', '\%81v', 100)
 set nocursorline " performance issue
 
 " set indentation
+set autoindent
 set shiftwidth=4
-set tabstop=4
 " tab as spaces
 set expandtab
 set softtabstop=4
 " round indent to multiple of shiftwidth
 set shiftround
-set autoindent
+
+" incremental search + highlight found things
+set incsearch
+set hlsearch
 
 " display current cursor position in the lower left corner?
 " set ruler
@@ -98,4 +101,10 @@ else
     set ttimeoutlen=10
 endif
 
-
+" References
+" http://yannesposito.com/Scratch/en/blog/Vim-as-IDE/
+" https://robots.thoughtbot.com/the-vim-learning-curve-is-a-myth
+" http://benmccormick.org/2014/06/30/learning-vim-in-2014-the-basics/
+" http://tilvim.com/
+" https://github.com/kien/rainbow_parentheses.vim
+" https://github.com/luochen1990/rainbow
