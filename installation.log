@@ -1,4 +1,4 @@
-﻿Thinkpad T540p aka maschin
+﻿Thinkpad T540p greystone
 
 # wifi network configuration
 > lspci | grep -i net
@@ -116,6 +116,7 @@ other partitions 0 2
 # bootloader:
 > pacman -S grub
 > grub-install --target=i386-pc --recheck /dev/sda
+# add kernel parameters
 > grub-mkconfig -o /boot/grub/grub.cfg
 
 # install base system end
@@ -140,9 +141,16 @@ other partitions 0 2
 # clone config repo
 
 # install reflector to update pacman mirrors list
+> pacman -S reflector
 
-# desktop environment:
-# install gnome core packages, gnome terminal, tweak tool
+# desktop environment begin
+# install gnome core packages, gnome terminal, tweak tool, network-manager-applet
+
+# configure Network Manager (wpa_supplicant.service should be already started):
+> sudo systemctl enable NetworkManager.service
+> gpasswd -a %username% network
+> sudo systemctl start NetworkManager.service
+
 # gnome extensions:
     Autohide battery
     Battery percentage
@@ -159,9 +167,10 @@ other partitions 0 2
         set media.mediasource.enabled parameter (video playback)
         HiDPI support: set layout.css.devPixelsPerPx to 2
     shumway extension for flash (?)
-# install yaourt
+# yaourt
     install abs
     chown /var/abs/local/
+    install package-query and yaourt
 # install ttf fonts (dejavu, droid, inconsolata, ubuntu-font-family, adobe-source-code-pro, 
                      anonymous-pro, liberation, monaco, mac-fonts)
 # install gnome themes
@@ -174,7 +183,7 @@ other partitions 0 2
     Numix
     Numix-Circle
     UltraFlatIcons
-
+# desktop environment end
 
 
 
