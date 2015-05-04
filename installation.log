@@ -117,6 +117,9 @@ other partitions 0 2
 > pacman -S grub
 > grub-install --target=i386-pc --recheck /dev/sda
 # add kernel parameters
+# disable NCQ for Samsung 850 pro, set IO queuing to noop
+> nano /etc/default/grub
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet libata.force=noncq elevator=noop"
 > grub-mkconfig -o /boot/grub/grub.cfg
 
 # install base system end
@@ -126,10 +129,8 @@ other partitions 0 2
 > umount /mnt
 > reboot now  # remove installation media!
 
-
-# SSD
+# schedule SSD TRIM
 > systemctl enable fstrim.timer
-> echo noop > /sys/block/sda/queue/scheduler (?)
 
 # uncomment multilib
 > sudo nano /etc/pacman.conf
@@ -147,8 +148,8 @@ other partitions 0 2
 # install gnome core packages, gnome terminal, tweak tool, network-manager-applet
 
 # configure Network Manager (wpa_supplicant.service should be already started):
-> sudo systemctl enable NetworkManager.service
 > gpasswd -a %username% network
+> sudo systemctl enable NetworkManager.service
 > sudo systemctl start NetworkManager.service
 
 # gnome extensions:
@@ -169,10 +170,9 @@ other partitions 0 2
     shumway extension for flash (?)
 # yaourt
     install abs
-    chown /var/abs/local/
+    chown %username /var/abs/local/
     install package-query and yaourt
-# install ttf fonts (dejavu, droid, inconsolata, ubuntu-font-family, adobe-source-code-pro, 
-                     anonymous-pro, liberation, monaco, mac-fonts)
+# install fonts (ttf-dejavu, ttf-google-fonts-git, ttf-monaco, ttf-mac-fonts)
 # install gnome themes
     Numix
     Numix_OSX
