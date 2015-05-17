@@ -6,6 +6,7 @@ basedir=$(pwd)
 
 # zsh
 ln -sf $basedir/.zshrc ~/.zshrc
+ln -sf $basedir/.zlogin ~/.zlogin
 ln -sf $basedir/prompt.zsh ~/prompt.zsh
 
 # X server
