@@ -2,7 +2,8 @@
 
 basedir=$(pwd)
 
-#ln -sf $basedir/.vimrc ~/.vimrc
+ln -sf $basedir/.vimrc ~/.vimrc
+ln -sf $basedir/.nvimrc ~/.nvimrc
 
 # zsh
 ln -sf $basedir/.zshrc ~/.zshrc
@@ -15,7 +16,8 @@ ln -sf $basedir/.xinitrc ~/.xinitrc
 
 ln -sf $basedir/.gitconfig ~/.gitconfig
 
-#sudo ln -sf $basedir/90-keyboard.conf /etc/X11/xorg.conf.d/90-keyboard.conf 
+sudo ln -sf $basedir/70-keyboard.hwdb /etc/udev/hwdb.d/70-keyboard.hwdb
+
 
 #sudo ln -sf $basedir/locale.conf /etc/locale.conf 
 

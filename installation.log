@@ -186,8 +186,31 @@ other partitions 0 2
 # desktop environment end
 
 
+! MISC
 
+- disable NCQ for Samsung 850 Pro SSD
+- generate pacman mirrorlist:
+# reflector --verbose -l 100 --sort rate --save /etc/pacman.d/mirrorlist
 
+! pacman/yaourt tips:
+
+! remove package safely with dependencies
+> yaourt -Rsn <package name>
+
+! find installed packages by name (displays description):
+> yaourt -Qs <package name>
+
+! search packages by name:
+> yaourt -Ssq <package name>
+
+! remove packages using list in file:
+> yaourt -Ssq <package name> > pkglist
+> vim pkglist
+> yaourt -Rsn - < pkglist
+
+! update standard packages first and then AUR:
+> yaourt -Syu
+> yaourt -Su --aur
 
 
 # pacman -S xterm

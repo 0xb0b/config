@@ -1,0 +1,12 @@
+# swap CapsLock and Esc
+
+# laptop keyboard:
+evdev:atkbd:dmi:*
+  KEYBOARD_KEY_3a=esc
+  KEYBOARD_KEY_01=capslock
+ 
+# USB keyboards:
+#evdev:input:b0003v*p*
+#  KEYBOARD_KEY_xx=esc
+#  KEYBOARD_KEY_xx=capslock
+  
