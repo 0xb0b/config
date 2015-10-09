@@ -6,7 +6,7 @@ evdev:atkbd:dmi:*
   KEYBOARD_KEY_01=capslock
  
 # USB keyboards:
-#evdev:input:b0003v*p*
-#  KEYBOARD_KEY_xx=esc
-#  KEYBOARD_KEY_xx=capslock
+evdev:input:b0003v04D9p0141*
+  KEYBOARD_KEY_070039=esc
+  KEYBOARD_KEY_070029=capslock
   
