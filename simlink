@@ -3,7 +3,9 @@
 basedir=$(pwd)
 
 ln -sf $basedir/.vimrc ~/.vimrc
-ln -sf $basedir/.nvimrc ~/.nvimrc
+ln -sf $basedir/init.vim ~/.config/nvim/init.vim
+
+ln -sf $basedir/termite_config ~/.config/termite/config
 
 # zsh
 ln -sf $basedir/.zshrc ~/.zshrc

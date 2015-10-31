@@ -1,4 +1,4 @@
-call plug#begin('~/.nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
@@ -13,8 +13,8 @@ call plug#end()
 
 "    colorscheme solarized
  
-    colorscheme gruvbox
     let g:gruvbox_italic=0  " turn off italic in terminal
+    colorscheme gruvbox
 
 
 " hybrid line numbers
@@ -23,8 +23,15 @@ call plug#end()
     set relativenumber
 
 
-" change background after textwidth column
+" indentation
+    set autoindent
+    set smartindent
+    set shiftwidth=2
+    set softtabstop=2
+    set expandtab
 
+
+" change background after textwidth column
 " get the background color of the Normal highlighting group
 " and make it darker
 let bgcolor=synIDattr(synIDtrans(hlID("Normal")), "bg") - 1
@@ -32,3 +39,8 @@ let bgcolor=synIDattr(synIDtrans(hlID("Normal")), "bg") - 1
 set textwidth=80
 exe "highlight ColorColumn ctermbg=".bgcolor
 let &colorcolumn="+".join(range(1,256), ",+")
+
+
+" mappings
+nmap <CR> o<Esc>k
+nmap <S-Enter> O<Esc>j

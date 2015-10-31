@@ -190,7 +190,7 @@ other partitions 0 2
 
 - disable NCQ for Samsung 850 Pro SSD
 - generate pacman mirrorlist:
-# reflector --verbose -l 100 --sort rate --save /etc/pacman.d/mirrorlist
+# sudo reflector --verbose -l 100 --sort rate --save /etc/pacman.d/mirrorlist
 
 ! pacman/yaourt tips:
 
