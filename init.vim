@@ -9,12 +9,14 @@ call plug#end()
 " colorize
 
     syntax on 
-    set background=dark
+"    set background=dark
+    set background=light
 
-"    colorscheme solarized
+    colorscheme solarized
  
-    let g:gruvbox_italic=0  " turn off italic in terminal
-    colorscheme gruvbox
+"    let g:gruvbox_italic=0  " turn off italic in terminal
+"    let g:gruvbox_contrast_dark="soft"
+"    colorscheme gruvbox
 
 
 " hybrid line numbers
