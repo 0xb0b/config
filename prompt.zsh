@@ -8,7 +8,7 @@ VCSDIRTY_FG="%{$fg[red]%}"
 RESET_COLOR="%{$reset_color%}"
 
 # change path color to red if root
-[[ $UID -eq 0 ]] && current_path="$ROOT_PATH_FG%~ $RESET_COLOR" || current_path="$PATH_FG%~ $RESET_COLOR" 
+[[ $UID -eq 0 ]] && current_path="$ROOT_PATH_FG %~ $RESET_COLOR" || current_path="$PATH_FG %~ $RESET_COLOR" 
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
