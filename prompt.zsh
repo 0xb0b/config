@@ -31,4 +31,4 @@ precmd() {
 
 setopt prompt_subst
 
-PROMPT="%{$fg[red]%}>$RESET_COLOR "
+PROMPT="%{$fg[red]%} >$RESET_COLOR "
