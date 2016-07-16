@@ -18,7 +18,7 @@ ln -sf $basedir/.xinitrc ~/.xinitrc
 
 ln -sf $basedir/.gitconfig ~/.gitconfig
 
-sudo ln -sf $basedir/70-keyboard.hwdb /etc/udev/hwdb.d/70-keyboard.hwdb
+#sudo ln -sf $basedir/70-keyboard.hwdb /etc/udev/hwdb.d/70-keyboard.hwdb
 
 
 #sudo ln -sf $basedir/locale.conf /etc/locale.conf 

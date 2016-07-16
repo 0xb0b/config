@@ -4,5 +4,5 @@
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # exec gnome-session
-
-exec startkde
+#exec startkde
+exec cinnamon-session

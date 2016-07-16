@@ -1,5 +1,7 @@
 [options]
 font = Monaco Bold 8
+allow_bold = false
+geometry = 842x690
 
 #https://github.com/alpha-omega/termite-colors-solarized
 #solarized dark color scheme
