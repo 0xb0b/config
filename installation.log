@@ -100,7 +100,7 @@ other partitions 0 2
 
 # users
 # "userdel -r %user" to start over
-> echo %hostname /etc/hostname
+> echo %hostname > /etc/hostname
 > passwd
 
 > pacman -S zsh git

@@ -1,0 +1,24 @@
+
+Layer 3 (red)
+
+  Esc->Fn         1  2  ...
+  Tab->Esc         Q  W  ...
+  CapsLock->Ctrl    A  S  ...
+  Shift
+  Ctrl->Tab  Win->~  Alt  ... Alt  Fn  Pn  Ctrl
+  
+Fn+CapsLock->CapsLock
+Fn+Win->`
+
+
+# version 2
+Layer 3 (red)
+
+  Esc->Fn         1  2  ...
+  Tab              Q  W  ...
+  CapsLock->Esc     A  S  ...
+  Shift
+  Ctrl    Win->~     Alt  ... Alt  Fn  Pn  Ctrl
+  
+Fn+CapsLock->CapsLock
+Fn+Win->`
