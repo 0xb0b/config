@@ -1,13 +1,27 @@
 
 " auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall
+if has("win32")
+  let plug_path = nvim_config_dir.'\autoload\plug.vim'
+  let plugged_path = nvim_config_dir.'\plugged'
+else
+  let plug_path = nvim_config_dir.'/autoload/plug.vim'
+  let plugged_path = nvim_config_dir.'/plugged'
 endif
 
-call plug#begin('~/.config/nvim/plugged')
+let vim_plug_uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob(plug_path))
+  if has("win32")
+    silent execute '!md '.nvim_config_dir.'\autoload'
+    " windows, install manually!
+  else
+    silent execute '!curl -fLo '.plug_path.' --create-dirs '.vim_plug_uri
+  endif
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin(plugged_path)
 Plug 'altercation/vim-colors-solarized'
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 

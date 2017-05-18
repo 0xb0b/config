@@ -18,12 +18,31 @@ set tabstop=2
 set expandtab
 
 " make tabs and trailing spaces visible
-set list listchars=tab:>>,trail:.
+set list listchars=tab:▸▸,trail:·
 
+" Unix line endings always
+set ff=unix
+
+set autowriteall
+
+augroup vimrc_autocmds
+  autocmd!
 " highlight the first characters past right margin
-augroup right_margin
   autocmd BufEnter * highlight RightMargin ctermbg=darkred guibg=darkred
   autocmd BufEnter * match RightMargin '\%81v.'
+" toggle cursor line highlight in INSERT mode
+  autocmd InsertEnter * set cursorline
+  autocmd InsertLeave * set nocursorline
+" change to directory of the current buffer
+  autocmd BufEnter * cd %:p:h
 augroup END
 
-source $HOME/.config/nvim/plugins.vimrc
+" config directory variable
+let g:nvim_config_dir = fnamemodify($MYVIMRC, ':p:h')
+
+" mappings
+execute 'source '.globpath(nvim_config_dir, 'mappings.vimrc')
+
+" plugins stuff
+execute 'source '.globpath(nvim_config_dir, 'plugins.vimrc')
+
