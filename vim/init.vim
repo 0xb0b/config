@@ -23,7 +23,10 @@ set list listchars=tab:▸▸,trail:·
 " Unix line endings always
 set ff=unix
 
+" automatically write the buffer when leaving
 set autowriteall
+
+Guifont Consolas:h10
 
 augroup vimrc_autocmds
   autocmd!

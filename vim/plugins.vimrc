@@ -22,11 +22,13 @@ endif
 call plug#begin(plugged_path)
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
+Plug 'yuttie/comfortable-motion.vim'
+"Plug 'fholgado/minibufexpl.vim'
 call plug#end()
 
 
 " vim-colors-solarized
-let g:solarized_termcolors=256  " terminal
+" let g:solarized_termcolors=256  " terminal
 set background=light
 colorscheme solarized
 
