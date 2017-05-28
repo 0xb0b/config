@@ -26,7 +26,9 @@ set ff=unix
 " automatically write the buffer when leaving
 set autowriteall
 
-Guifont Consolas:h10
+if has("gui_running")
+  Guifont Consolas:h10
+endif
 
 augroup vimrc_autocmds
   autocmd!
