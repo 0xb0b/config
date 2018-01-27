@@ -26,6 +26,10 @@ set ff=unix
 " automatically write the buffer when leaving
 set autowriteall
 
+" more natural splitting
+set splitbelow
+set splitright
+
 if has("gui_running")
   Guifont Consolas:h10
 endif
@@ -33,7 +37,7 @@ endif
 augroup vimrc_autocmds
   autocmd!
 " highlight the first characters past right margin
-  autocmd BufEnter * highlight RightMargin ctermbg=darkred guibg=darkred
+  autocmd BufEnter * highlight RightMargin ctermbg=DarkRed ctermfg=White guibg=DarkRed guifg=White
   autocmd BufEnter * match RightMargin '\%81v.'
 " toggle cursor line highlight in INSERT mode
   autocmd InsertEnter * set cursorline
