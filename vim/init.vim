@@ -50,8 +50,8 @@ augroup END
 let g:nvim_config_dir = fnamemodify($MYVIMRC, ':p:h')
 
 " mappings
-execute 'source '.globpath(nvim_config_dir, 'mappings.vimrc')
+execute 'source '.globpath(nvim_config_dir, 'mappings.vim')
 
 " plugins stuff
-execute 'source '.globpath(nvim_config_dir, 'plugins.vimrc')
+execute 'source '.globpath(nvim_config_dir, 'plugins.vim')
 
