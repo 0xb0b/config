@@ -1,0 +1,47 @@
+// ubuntu 18.04
+
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt remove firefox
+
+// install chrome
+  $ wget dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  // run deb installer
+
+// development tools
+  $ sudo apt install python
+  $ sudo apt install python-pip python-dev python3-pip python3-dev
+  $ sudo apt install build-essential
+  $ sudo apt install git
+  $ sudo apt install neovim
+  $ sudo apt install curl
+
+// clone config repo
+
+// deep learning
+  $ sudo apt install libopenblas-dev liblapack-dev
+  $ sudo apt install python-numpy python-scipy python-matplotlib python-yaml
+  $ sudo apt install libhdf5-serial-dev python-h5py
+  $ sudo apt install graphviz
+  $ pip3 install pydot-ng
+  $ pip3 install tensorflow
+  $ pip3 install keras
+  $ sudo snap install pycharm-community --classic
+
+// install gnome tweaks
+  // disable animations
+
+$ sudo apt install gnome-shell-extensions
+
+// Mac theme
+  // download theme from
+  // https://github.com/paullinuxthemer/gnome-osc-themes
+  // to ~/.themes ([traditional, not transparent] is a good one)
+
+  // icons
+  $ sudo add-apt-repository ppa:dyatlov-igor/la-capitaine
+  $ sudo apt update
+  $ sudo apt install la-capitaine-icon-theme
+
+// install redshift (+ enable location service in privacy settings)
+
