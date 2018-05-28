@@ -1,22 +1,18 @@
-// ubuntu 18.04
+// manjaro cinnamon
 
-$ sudo apt update
-$ sudo apt upgrade
-$ sudo apt remove firefox
+// remove firefox and other unneeded software
 
 // install chrome
-  $ wget dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  // run deb installer
 
 // development tools
-  $ sudo apt install python
-  $ sudo apt install python-pip python-dev python3-pip python3-dev
-  $ sudo apt install build-essential
-  $ sudo apt install git
-  $ sudo apt install neovim
-  $ sudo apt install curl
+  install python-pip python2-pip
+  install neovim
 
 // clone config repo
+  config files for git, bash, nvim
+
+// install redshift (+ enable location service in privacy settings)
+  put config file for redshift in ~/.config/
 
 // deep learning
   $ sudo apt install libopenblas-dev liblapack-dev
@@ -28,10 +24,6 @@ $ sudo apt remove firefox
   $ pip3 install keras
   $ sudo snap install pycharm-community --classic
 
-// install gnome tweaks
-  // disable animations
-
-$ sudo apt install gnome-shell-extensions
 
 // Mac theme
   // download theme from
@@ -43,5 +35,4 @@ $ sudo apt install gnome-shell-extensions
   $ sudo apt update
   $ sudo apt install la-capitaine-icon-theme
 
-// install redshift (+ enable location service in privacy settings)
 
