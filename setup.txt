@@ -1,18 +1,28 @@
-// manjaro cinnamon
+// manjaro gnome
 
 // remove firefox and other unneeded software
 
+// rate mirrors
+  $ sudo pacman-mirrors --fasttrack
+
+// update
+
 // install chrome
+
+// Mac theme
+  // download theme from
+  // https://github.com/paullinuxthemer/gnome-osc-themes
+  // to ~/.themes ([traditional, not transparent] is a good one)
+
+// icons theme
+  la-capitaine
 
 // development tools
   install python-pip python2-pip
   install neovim
 
 // clone config repo
-  config files for git, bash, nvim
-
-// install redshift (+ enable location service in privacy settings)
-  put config file for redshift in ~/.config/
+  config files for git, bash, nvim (copy to .config/nvim/)
 
 // deep learning
   $ sudo apt install libopenblas-dev liblapack-dev
@@ -24,15 +34,5 @@
   $ pip3 install keras
   $ sudo snap install pycharm-community --classic
 
-
-// Mac theme
-  // download theme from
-  // https://github.com/paullinuxthemer/gnome-osc-themes
-  // to ~/.themes ([traditional, not transparent] is a good one)
-
-  // icons
-  $ sudo add-apt-repository ppa:dyatlov-igor/la-capitaine
-  $ sudo apt update
-  $ sudo apt install la-capitaine-icon-theme
 
 

@@ -4,3 +4,8 @@
 # environment. The env command sets the PATH variable in the environment of
 # the command to be executed
 alias psudo='sudo env PATH="$PATH"'
+
+# history aliases
+alias h="history"
+alias hg="history | grep"
+
