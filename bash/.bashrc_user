@@ -21,7 +21,7 @@ mkvenv() {
     then
       echo "usage: mkvenv <name>"
   else
-    python -m venv $VENVDIR/"$1"
+    python -m venv --copies $VENVDIR/"$1"
   fi
 }
 
@@ -48,3 +48,6 @@ rmvenv() {
   fi
 }
 
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
