@@ -1,0 +1,9 @@
+# add to .bashrc:
+
+. ~/.bash_aliases
+. ~/.bashrc_user
+
+# src specific features files:
+. ~/.bashrc_venv
+. ~/.bashrc_texlive
+# etc
