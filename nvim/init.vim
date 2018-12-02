@@ -30,6 +30,10 @@ set autowriteall
 set splitbelow
 set splitright
 
+" make textwidth margin
+"let &colorcolumn=join(range(80, 200), ',')
+set colorcolumn=80
+
 if has("gui_running")
   Guifont Consolas:h10
 endif
@@ -37,11 +41,13 @@ endif
 augroup vimrc_autocmds
   autocmd!
 " highlight the first characters past right margin
-  autocmd BufEnter * highlight RightMargin ctermbg=DarkRed ctermfg=White guibg=DarkRed guifg=White
-  autocmd BufEnter * match RightMargin '\%81v.'
+" autocmd BufEnter * highlight RightMargin ctermbg=DarkRed ctermfg=White guibg=DarkRed guifg=White
+" autocmd BufEnter * match RightMargin '\%81v.'
+
 " toggle cursor line highlight in INSERT mode
   autocmd InsertEnter * set cursorline
   autocmd InsertLeave * set nocursorline
+
 " change to directory of the current buffer
   autocmd BufEnter * cd %:p:h
 augroup END
@@ -54,4 +60,3 @@ execute 'source '.globpath(nvim_config_dir, 'mappings.vim')
 
 " plugins stuff
 execute 'source '.globpath(nvim_config_dir, 'plugins.vim')
-

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+basedir=~/config
+
+ln -sf $basedir/nvim/init.vim ~/.config/nvim/init.vim
+ln -sf $basedir/nvim/mappings.vim ~/.config/nvim/mappings.vim
+ln -sf $basedir/nvim/plugins.vim ~/.config/nvim/plugins.vim

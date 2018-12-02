@@ -1,30 +1,37 @@
-// manjaro gnome
+# manjaro gnome
 
-// remove firefox and other unneeded software
+# remove firefox and other unneeded software
 
-// rate mirrors
+# rate mirrors
   $ sudo pacman-mirrors --fasttrack
 
-// update
+# update
 
-// install chrome
+# install chrome
 
-// Mac theme
-  // download theme from
-  // https://github.com/paullinuxthemer/gnome-osc-themes
-  // to ~/.themes ([traditional, not transparent] is a good one)
+# Mac theme
+# download from
+#     https://github.com/paullinuxthemer/Mc-OS-themes
+# to ~/.themes
 
-// icons theme
+# icons theme
   la-capitaine
 
-// development tools
-  install python-pip python2-pip
+# install (dash to panel) extension
+
+# terminal theme
+  https://github.com/Mayccoll/Gogh
+
+# development tools
   install neovim
 
-// clone config repo
-  config files for git, bash, nvim (copy to .config/nvim/)
+  install python-pip python2-pip
+  $ mkdir ~/.python_venv
 
-// deep learning
+# clone config repo
+  config files for git, bash, nvim (copy to .config/nvim/) etc
+
+# deep learning
   $ sudo apt install libopenblas-dev liblapack-dev
   $ sudo apt install python-numpy python-scipy python-matplotlib python-yaml
   $ sudo apt install libhdf5-serial-dev python-h5py

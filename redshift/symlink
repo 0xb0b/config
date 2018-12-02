@@ -1,0 +1,6 @@
+#!/bin/bash
+
+basedir=~/config
+
+ln -sf $basedir/redshift/redshift.conf ~/.config/redshift/redshift.conf
+

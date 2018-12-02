@@ -1,0 +1,5 @@
+#!/bin/bash
+
+basedir=~/config
+
+ln -sf $basedir/.gitconfig ~/.gitconfig

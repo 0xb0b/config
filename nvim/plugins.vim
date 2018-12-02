@@ -9,11 +9,11 @@ if empty(glob(plug_path))
 endif
 
 call plug#begin(plugged_path)
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-Plug 'reedes/vim-colors-pencil'
+"Plug 'reedes/vim-colors-pencil'
 Plug 'yuttie/comfortable-motion.vim'
-Plug 'junegunn/goyo.vim'
+"Plug 'junegunn/goyo.vim'
 call plug#end()
 
 
