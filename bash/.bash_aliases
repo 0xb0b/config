@@ -6,5 +6,3 @@
 alias psudo='sudo env PATH="$PATH"'
 
 alias lsa="ls -la"
-
-alias h="history | fzf"
