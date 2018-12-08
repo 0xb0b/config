@@ -5,7 +5,6 @@
 # the command to be executed
 alias psudo='sudo env PATH="$PATH"'
 
-# history aliases
-alias h="history"
-alias hg="history | grep"
+alias lsa="ls -la"
 
+alias h="history | fzf"
