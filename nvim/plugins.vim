@@ -14,6 +14,7 @@ Plug 'morhetz/gruvbox'
 "Plug 'reedes/vim-colors-pencil'
 Plug 'yuttie/comfortable-motion.vim'
 "Plug 'junegunn/goyo.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
 
 

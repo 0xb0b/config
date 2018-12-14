@@ -5,4 +5,6 @@
 # the command to be executed
 alias psudo='sudo env PATH="$PATH"'
 
+alias h="history"
+
 alias lsa="ls -la"
