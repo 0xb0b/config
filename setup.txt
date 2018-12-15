@@ -10,9 +10,9 @@
 # install chrome
 
 # Mac theme
-# download from
-#     https://github.com/paullinuxthemer/Mc-OS-themes
-# to ~/.themes
+# clone https://github.com/paullinuxthemer/Mc-OS-themes
+# copy themes to ~/.themes
+# copy gnome-shell/ from Mc-Os-themes/McOS-Shell-themes/<shell theme>/ to ~/.themes/<theme>
 
 # icons theme
   la-capitaine
