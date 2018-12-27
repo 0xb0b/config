@@ -1,4 +1,5 @@
-# python venv management
+# python3 venv management
+
 export VENVDIR=$HOME/.python_venv
 
 mkvenv() {
@@ -6,7 +7,7 @@ mkvenv() {
     then
       echo "usage: mkvenv <name>"
   else
-    python -m venv --copies $VENVDIR/"$1"
+    python3 -m venv --copies $VENVDIR/"$1"
   fi
 }
 

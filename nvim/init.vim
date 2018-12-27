@@ -55,6 +55,9 @@ augroup END
 " config directory variable
 let g:nvim_config_dir = fnamemodify($MYVIMRC, ':p:h')
 
+" Python 3 support
+let g:python3_host_prog = '/home/xbob/.python_venv/neovim/bin/python'
+
 " mappings
 execute 'source '.globpath(nvim_config_dir, 'mappings.vim')
 
