@@ -52,9 +52,6 @@ augroup vimrc_autocmds
   autocmd BufEnter * cd %:p:h
 augroup END
 
-" python support
-let g:python3_host_prog = '/home/xbob/.python_venv/neovim/bin/python'
-
 " config directory variable
 let g:nvim_config_dir = fnamemodify($MYVIMRC, ':p:h')
 
