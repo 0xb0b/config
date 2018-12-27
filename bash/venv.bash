@@ -1,6 +1,9 @@
 # python3 venv management
 
 export VENVDIR=$HOME/.python_venv
+if [ ! -d $VENVDIR ]; then
+  mkdir $VENVDIR
+fi
 
 mkvenv() {
   if [ -z "$1" ]

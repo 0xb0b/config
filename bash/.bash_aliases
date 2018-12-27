@@ -8,3 +8,7 @@ alias psudo='sudo env PATH="$PATH"'
 alias h="history"
 
 alias lsa="ls -la"
+
+alias c="clear"
+
+alias :q="exit"
