@@ -9,6 +9,14 @@ alias h="history"
 
 alias lsa="ls -la"
 
+
+cdls() {
+  cd "$1" && ls && echo -e "\n"
+}
+
+alias cd="cdls"
+
+
 alias c="clear"
 
 alias :q="exit"
