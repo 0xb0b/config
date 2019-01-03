@@ -11,7 +11,7 @@ alias lsa="ls -la"
 
 
 cdls() {
-  cd "$1" && ls && echo -e "\n"
+  cd "$1" && ls
 }
 
 alias cd="cdls"
