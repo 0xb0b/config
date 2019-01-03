@@ -1,6 +1,6 @@
 1. move config file to repo directory (~/config)
 2. make a script with symlink(s):
-       [sudo] ln -sf <src path>/<filename> <target_path>/<filename>
+       [sudo] ln -sf <src path> <symlink path>
 4. commit
 
 
