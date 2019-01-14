@@ -16,7 +16,7 @@ Plug 'yuttie/comfortable-motion.vim'
 "Plug 'junegunn/goyo.vim'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 call plug#end()
 
 
