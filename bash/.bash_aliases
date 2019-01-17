@@ -7,8 +7,8 @@ alias psudo='sudo env PATH="$PATH"'
 
 alias h="history"
 
-alias ls="exa -x --group-directories-first"
-alias lsa="exa -la --git --group-directories-first"
+alias ls="exa -xa --group-directories-first"
+alias ll="exa -la --git --group-directories-first"
 
 
 cdls() {
