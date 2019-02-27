@@ -63,3 +63,4 @@ execute 'source '.globpath(nvim_config_dir, 'mappings.vim')
 
 " plugins stuff
 execute 'source '.globpath(nvim_config_dir, 'plugins.vim')
+
