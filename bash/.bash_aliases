@@ -9,9 +9,11 @@ alias h="history"
 
 alias ls="ls -x --color --group-directories-first"
 
+alias ll="ls -alF"
+
 
 cdls() {
-  cd "$1" && ls
+  cd "$1" && ls -F
 }
 
 alias cd="cdls"
