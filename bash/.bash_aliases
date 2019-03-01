@@ -13,7 +13,7 @@ alias ll="ls -AlF"
 
 
 cdls() {
-  cd "$1" && ls -AF
+  cd "$1" && ls -F
 }
 
 alias cd="cdls"
