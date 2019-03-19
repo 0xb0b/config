@@ -1,7 +1,8 @@
 #!/bin/bash
 
-basedir=~/config
+srcdir=$HOME/config/fontconfig
+targetdir=$HOME/.config/fontconfig
 
-mkdir -p ~/.config/fontconfig
-ln -sf $basedir/fontconfig/fonts.conf ~/.config/fontconfig/fonts.conf
+mkdir -p $targetdir
+ln -sf $srcdir/fonts.conf $targetdir/fonts.conf
 

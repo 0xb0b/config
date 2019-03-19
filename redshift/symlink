@@ -1,6 +1,7 @@
 #!/bin/bash
 
-basedir=~/config
+srcdir=$HOME/config/redshift
+targetdir=$HOME/.config/redshift
 
-ln -sf $basedir/redshift/redshift.conf ~/.config/redshift/redshift.conf
+ln -sf $srcdir/redshift.conf $targetdir/redshift.conf
 

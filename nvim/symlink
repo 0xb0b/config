@@ -1,8 +1,10 @@
 #!/bin/bash
 
-basedir=~/config
+srcdir=$HOME/config/nvim
+targetdir=$HOME/.config/nvim
 
-mkdir -p ~/.config/nvim
-ln -sf $basedir/nvim/init.vim ~/.config/nvim/init.vim
-ln -sf $basedir/nvim/mappings.vim ~/.config/nvim/mappings.vim
-ln -sf $basedir/nvim/plugins.vim ~/.config/nvim/plugins.vim
+mkdir -p $targetdir
+ln -sf $srcdir/init.vim $targetdir/init.vim
+ln -sf $srcdir/mappings.vim $targetdir/mappings.vim
+ln -sf $srcdir/plugins.vim $targetdir/plugins.vim
+

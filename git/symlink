@@ -1,0 +1,6 @@
+#!/bin/bash
+
+srcdir=$HOME/config/git
+targetdir=$HOME
+
+ln -sf $srcdir/.gitconfig $targetdir/.gitconfig
