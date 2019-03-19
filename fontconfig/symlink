@@ -1,0 +1,7 @@
+#!/bin/bash
+
+basedir=~/config
+
+mkdir -p ~/.config/fontconfig
+ln -sf $basedir/fontconfig/fonts.conf ~/.config/fontconfig/fonts.conf
+
