@@ -36,8 +36,8 @@ colorscheme gruvbox
 
 " startify
 
-let g:startify_lists = [ {'type': 'sessions', 'header': ['  session:']},
-                        \{'type': 'files', 'header': ['  recent:']} ]
+let g:startify_lists = [ {'type': 'sessions', 'header': ['  session']},
+                        \{'type': 'files', 'header': ['  recent']} ]
 let g:startify_files_number = 16
 let g:startify_session_sort = 1
 let g:startify_session_persistence = 1

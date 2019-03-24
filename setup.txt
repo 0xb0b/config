@@ -1,119 +1,116 @@
-# manjaro install
+manjaro install
 
-# remove firefox and other unneeded software
+  remove firefox and other unneeded software
 
-# rate mirrors and update
-  > sudo pacman-mirrors --fasttrack
-  > sudo pacman -Syyu  # force sync the database (even it is up to date)
+  rate mirrors and update
+    > sudo pacman-mirrors --fasttrack
+    > sudo pacman -Syyu
+      # force sync the database (even it is up to date)
 
-# install fonts:
+  install fonts:
     liberation
     monaco
 
-# install chrome
+  install chrome
 
-# clone config repo
-  config files for git, bash, nvim (copy to .config/nvim/) etc
+  clone config repo (configuration for git, bash, nvim etc)
 
-# install neovim
-  # TODO python support, virtual environment?
+  install neovim
 
-# install redshift
+  install redshift
 
-# install rofi (?)
+  install rofi (?)
 
-# install fzf, ripgrep
+  install fzf, ripgrep
 
-# manjaro xfce
-  # Mac theme
-    > git clone https://github.com/paullinuxthemer/McOS-XFCE-Edition.git
-    # copy to ~/.themes
-    # icons theme
-      la-capitaine
-  # install gnome terminal
-  # setting monospace system font has no effect
-    works through config: ~/.config/fontconfig/fonts.conf
+  manjaro xfce
+    Mac theme
+      > git clone https://github.com/paullinuxthemer/McOS-XFCE-Edition.git
+        copy to ~/.themes
+      icons theme
+        la-capitaine
+    install gnome terminal
 
-# manjaro gnome
-  # Mac theme
-    # clone https://github.com/paullinuxthemer/Mc-OS-themes
-    # copy themes to ~/.themes
-    # copy gnome-shell/ from Mc-Os-themes/McOS-Shell-themes/<shell theme>/ to ~/.themes/<theme>
-    # icons theme
-      la-capitaine
-  # install (dash to panel) extension
-  # install vlc
+  manjaro gnome
+    Mac theme
+      clone https://github.com/paullinuxthemer/Mc-OS-themes
+      copy themes to ~/.themes
+      copy gnome-shell/ from Mc-Os-themes/McOS-Shell-themes/<shell theme>/
+        to ~/.themes/<theme>
+      icons theme
+        la-capitaine
+    install (dash to panel) extension
+    install vlc
 
-# terminal theme
-  https://github.com/Mayccoll/Gogh
+  terminal theme
+    https://github.com/Mayccoll/Gogh
 
-# install python-pip (python2-pip ?)
-  > mkdir ~/.python_venv
+  install python-pip (python2-pip ?)
+    > mkdir ~/.python_venv
 
-# install pycharm
+  install pycharm
 
-# TODO update
-# deep learning
-  > sudo apt install libopenblas-dev liblapack-dev
-  > sudo apt install python-numpy python-scipy python-matplotlib python-yaml
-  > sudo apt install libhdf5-serial-dev python-h5py
-  > sudo apt install graphviz
-  > pip3 install pydot-ng
-  > pip3 install tensorflow
-  > pip3 install keras
-  > sudo snap install pycharm-community --classic
+  deep learning
+    install cmake, openblas, lapack, hdf5, cuda, cudnn
+
+
+  issues
+    setting monospace system font has no effect
+      works through config: ~/.config/fontconfig/fonts.conf
+
+    enable bluetooth at startup (before login)
+      edit /etc/bluetooth/main.conf
+        AutoEnable=true
 
 
 
 
-# manjaro reinstall
+manjaro reinstall
 
-# backup old home <user>/ -> <user>_backup/
+  backup old home <user>/ -> <user>_backup/
 
-# rsync new /home/<user> to home partition
-  > rsync -aHAX /home/<user> <home partition>/<user>
+  rsync new /home/<user> to home partition
+    > rsync -aHAX /home/<user> <home partition>/<user>
 
-# add home partition to fstab
-  # list partitions
-  > df -l
-  # find out home partition UUID
-  > sudo blkid /dev/<partition>
-  # add UUID to fstab as /home (2 in the end)
-    UUID=...  /home  ... defaults 0 2
+  add home partition to fstab
+    list partitions
+      > df -l
+    find out home partition UUID
+      > sudo blkid /dev/<partition>
+    add UUID to fstab as /home (2 in the end)
+      UUID=...  /home  ... defaults 0 2
 
-# backup /home to /home_backup temporarily and reboot into new home
+  backup /home to /home_backup temporarily and reboot into new home
 
-# add bash configs to .bashrc
+  add bash configs to .bashrc
 
-# copy data and settings from old home (/home/<user>_backup):
+  copy data and settings from old home (/home/<user>_backup):
     .python_venv/
     .themes/
-      # remove the contents!
+      remove the contents
     .config/nvim/
-      # only symlinks to configuration
+      only symlinks to configuration
     .config/redshift/
     .gitconfig
 
-# reinstall software
-  machine learning environment (?)
-    cuda
-    cudnn
+  reinstall software
 
-# theme configuration:
-  interface text: Liberation Sans Regular 10
-  monospace: Monaco Regular 11
-  legacy window titles: Liberation Sans Regular 10
+  theme configuration:
+    interface text: Liberation Sans Regular 10
+    monospace: Monaco Regular 11
+    legacy window titles: Liberation Sans Regular 10
 
 
 
 
-# maintenance
+maintenance
 
-# system update
-  > pacman -Syu
-  # after recreate mirrors list:
-    > pacman -Syyu
+  system update
+    > pacman -Syu
 
-# install packages
-  > pacman -Syu <package names>
+    after recreate mirrors list:
+      > pacman -Syyu
+
+  install packages
+    > pacman -Syu <package names>
 
