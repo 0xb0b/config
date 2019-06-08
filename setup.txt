@@ -112,5 +112,11 @@ maintenance
       > pacman -Syyu
 
   install packages
-    > pacman -Syu <package names>
+    > pacman -Syu <pckg names>
+
+  information about installed package:
+    > pacman -Qi <pckg name>
+
+  remove orphans:
+    > pacman -Rns $(pacman -Qtdq)
 
