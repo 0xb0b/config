@@ -10,32 +10,24 @@ endif
 
 call plug#begin(plugged_path)
 Plug 'morhetz/gruvbox'
-"Plug 'reedes/vim-colors-pencil'
-Plug 'andreypopp/vim-colors-plain'
 Plug 'yuttie/comfortable-motion.vim'
-"Plug 'junegunn/goyo.vim'
+Plug 'scrooloose/nerdcommenter'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'mhinz/vim-startify'
 call plug#end()
 
 
 " colors:
-
 set termguicolors
 set background=dark
-
-" gruvbox
-"let g:gruvbox_italic=0  " turn off italic in terminal
-"let g:gruvbox_contrast_dark="soft"
 colorscheme gruvbox
-"colorscheme plain
+let g:gruvbox_italic=0  " turn off italic in terminal
+let g:gruvbox_contrast_dark="soft"
 
 
 " startify
-
 let g:startify_lists = [ {'type': 'sessions', 'header': ['  session']},
                         \{'type': 'files', 'header': ['  recent']} ]
 let g:startify_files_number = 16
@@ -47,4 +39,8 @@ let g:startify_padding_left = 4
 let g:startify_enable_special = 0
 let g:startify_custom_indices = ['j', 'f', 'k', 'd', 'h', 'g']
 let g:startify_custom_header = ['']
+
+" nerdcommenter
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
 

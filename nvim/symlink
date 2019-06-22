@@ -7,4 +7,5 @@ mkdir -p $targetdir
 ln -sf $srcdir/init.vim $targetdir/init.vim
 ln -sf $srcdir/mappings.vim $targetdir/mappings.vim
 ln -sf $srcdir/plugins.vim $targetdir/plugins.vim
+ln -sf $srcdir/indent_settings.vim $targetdir/indent_settings.vim
 
