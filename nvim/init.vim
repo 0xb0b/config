@@ -19,7 +19,7 @@ set shiftwidth=2
 set expandtab
 " make textwidth margin
 "let &colorcolumn=join(range(80, 200), ',')
-set colorcolumn=100
+set colorcolumn=101
 
 " make tabs and trailing spaces visible
 set list listchars=tab:▸▸,trail:·
@@ -54,7 +54,7 @@ augroup END
 let g:python3_host_prog = '/home/xbob/.python_venv/neovim/bin/python'
 
 " config directory variable
-let g:nvim_config_dir = fnamemodify($MYVIMRC, ':p:h')
+let g:nvim_config_dir = stdpath("config")
 
 execute 'source '.globpath(nvim_config_dir, 'mappings.vim')
 execute 'source '.globpath(nvim_config_dir, 'plugins.vim')
