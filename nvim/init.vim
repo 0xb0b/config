@@ -1,5 +1,5 @@
 
-"turn on syntax highlighting
+" turn on syntax highlighting (this also triggers <filetype on>)
 syntax on
 
 " hybrid line numbers
@@ -34,7 +34,7 @@ set autowriteall
 set splitbelow
 set splitright
 
-filetype plugin on
+filetype plugin indent on
 
 augroup vimrc_autocmds
   autocmd!
@@ -58,5 +58,4 @@ let g:nvim_config_dir = stdpath("config")
 
 execute 'source '.globpath(nvim_config_dir, 'mappings.vim')
 execute 'source '.globpath(nvim_config_dir, 'plugins.vim')
-execute 'source '.globpath(nvim_config_dir, 'indent_settings.vim')
 
