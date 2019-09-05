@@ -33,3 +33,12 @@ nnoremap <silent> <leader>/ :nohl<CR>
 " quick quit
 nnoremap Q :qa<cr>
 
+" remap useful commands away from the numbers row
+nnoremap <leader>f *
+
+nnoremap <leader>e $
+vnoremap <leader>e $
+
+nnoremap <leader>m %
+vnoremap <leader>m %
+
