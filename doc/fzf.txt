@@ -1,0 +1,13 @@
+https://github.com/junegunn/fzf
+
+
+* install
+    with nvim Plug:
+      Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    installs fzf both on the system and as vim plugin
+
+* configure
+    add to bash configuration ( fzf.bash ):
+      EXPORT FZF_DEFAULT_COMMAND (use ripgrep for search)
+      EXPORT FZF_DEFAULT_OPTS (see the man page (man fzf) for the full list of options)
+
