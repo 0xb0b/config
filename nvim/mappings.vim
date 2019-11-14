@@ -1,7 +1,7 @@
 let mapleader=" "
 
 " list the buffers and be ready to switch
-nnoremap <leader>b :ls<CR>:b<Space>
+"nnoremap <leader>b :ls<CR>:b<Space>
 
 " quick windows control
 " navigation
@@ -19,7 +19,8 @@ inoremap <A-c> <Esc><C-w>c
 
 " terminal mode
 nnoremap <A-t> :terminal<CR>
-tnoremap <Esc> <C-\><C-n>
+" with this mapping it is not possible to use Esc with fzf
+"tnoremap <Esc> <C-\><C-n>
 "    add mapping to send <Esc> key to the process in terminal?
 tnoremap <A-j> <C-\><C-n><C-w>j
 tnoremap <A-k> <C-\><C-n><C-w>k
@@ -34,11 +35,15 @@ nnoremap <silent> <leader>/ :nohl<CR>
 nnoremap Q :qa<cr>
 
 " remap useful commands away from the numbers row
-nnoremap <leader>f *
-
 nnoremap <leader>e $
 vnoremap <leader>e $
 
 nnoremap <leader>m %
 vnoremap <leader>m %
+
+" fzf
+nnoremap <leader>o :Files<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>; :Lines<cr>
+nnoremap <leader>l :BLines<cr>
 

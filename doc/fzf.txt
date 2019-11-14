@@ -1,10 +1,12 @@
 https://github.com/junegunn/fzf
 
+* install ripgrep
+    https://github.com/BurntSushi/ripgrep#installation
 
 * install
-    with nvim Plug:
+    with nvim Plug (installs fzf both on the system and as vim plugin):
       Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    installs fzf both on the system and as vim plugin
+      Plug 'junegunn/fzf.vim'
 
 * configure
     add to bash configuration ( fzf.bash ):

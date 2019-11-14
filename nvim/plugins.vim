@@ -12,7 +12,7 @@ call plug#begin(plugged_path)
 Plug 'morhetz/gruvbox'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug '~/.fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'mhinz/vim-startify'
@@ -44,3 +44,7 @@ let g:startify_custom_header = ['']
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 
+" fzf
+let g:fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
+" open fzf window in the current split
+" let g:fzf_layout = { 'window': 'enew' }
