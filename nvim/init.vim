@@ -34,7 +34,13 @@ set autowriteall
 set splitbelow
 set splitright
 
+" detect file type, load filetype plugin, use filetype indent
 filetype plugin indent on
+
+" grep
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading\ --hidden
+endif
 
 augroup vimrc_autocmds
   autocmd!
@@ -48,6 +54,9 @@ augroup vimrc_autocmds
 
 " change to directory of the current buffer
   autocmd BufEnter * cd %:p:h
+
+" open quickfix window on grep
+  autocmd QuickFixCmdPost grep cwindow
 augroup END
 
 " Python 3 support

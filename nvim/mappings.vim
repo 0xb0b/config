@@ -35,6 +35,8 @@ nnoremap <silent> <leader>/ :nohl<CR>
 nnoremap Q :qa<cr>
 
 " remap useful commands away from the numbers row
+nnoremap <leader>f *
+
 nnoremap <leader>e $
 vnoremap <leader>e $
 
