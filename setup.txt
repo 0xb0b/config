@@ -120,3 +120,6 @@ maintenance
   remove orphans:
     > pacman -Rns $(pacman -Qtdq)
 
+  remove package:
+    > pacman -Rns <pckg name>
+
