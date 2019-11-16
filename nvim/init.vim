@@ -7,6 +7,10 @@ syntax on
 set number
 set relativenumber
 
+" cursor blinking in normal mode
+" setting has no effect in terminal, just turns terminal blinking on
+set guicursor=n-v-c:block-blinkon100
+
 " do not make swapfiles
 set noswapfile
 
