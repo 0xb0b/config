@@ -4,6 +4,6 @@
 . ~/config/bash/user.bash
 
 # src specific features files:
-. ~/config/bash/venv.bash
+. ~/config/bash/env.bash
 . ~/config/bash/fzf.bash
 # etc

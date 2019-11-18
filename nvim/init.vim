@@ -7,10 +7,6 @@ syntax on
 set number
 set relativenumber
 
-" cursor blinking in normal mode
-" setting has no effect in terminal, just turns terminal blinking on
-set guicursor=n-v-c:block-blinkon100
-
 " do not make swapfiles
 set noswapfile
 
@@ -64,7 +60,7 @@ augroup vimrc_autocmds
 augroup END
 
 " Python 3 support
-let g:python3_host_prog = '/home/xbob/.python_venv/neovim/bin/python'
+let g:python3_host_prog = $ENVDIR.'/python/neovim/bin/python'
 
 " config directory variable
 let g:nvim_config_dir = stdpath("config")
