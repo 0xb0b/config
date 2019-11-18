@@ -18,8 +18,8 @@ git_dirty() {
 }
 
 ps1_context() {
-  if [ -n "$VIRTUAL_ENV" ]; then
-    echo "($(basename "$VIRTUAL_ENV"))"
+  if [ -n "$ENVCONTEXT" ]; then
+    echo "($ENVCONTEXT)"
   fi
 }
 

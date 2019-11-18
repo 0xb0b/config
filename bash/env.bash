@@ -19,6 +19,7 @@ if [ ! -d "$pyenvdir" ]; then
   mkdir "$pyenvdir"
 fi
 
+
 lenv() {
   if [ -z "$1" ]; then
     # pipe to xargs to list only names without path
@@ -104,16 +105,35 @@ aenv() {
     menv "$1"
   fi
 
+  # dbg temp
+  if [ -z "$ENVCONTEXT" ]; then
+    export ENVCONTEXT=""
+  fi
+
   if [ "$envdir" = "$vimenvdir" ]; then
     if [ -z "$VIMENVNAME" ]; then
       (
+        # start subshell for the first environment
         export VIMENVNAME="$envname"
-        alias nvim nvim -u "$envdir/$envname/init.vim"
+        if [ -z "$ENVCONTEXT" ]; then
+          export ENVCONTEXT="$envname"
+        else
+          export OLDCONTEXT="$ENVCONTEXT"
+          export ENVCONTEXT="$OLDCONTEXT>$envname"
+        fi
+        # TODO does not work
+        alias nvim="nvim -u $envdir/$envname/init.vim"
         exec $SHELL
       )
     else
       export VIMENVNAME="$envname"
-      alias nvim nvim -u "$envdir/$envname/init.vim"
+      if [ -z "$OLDCONTEXT" ]; then
+        export ENVCONTEXT="$envname"
+      else
+        export ENVCONTEXT="$OLDCONTEXT>$envname"
+      fi
+      # TODO does not work
+      alias nvim="nvim -u $envdir/$envname/init.vim"
     fi
     return 0
   fi
@@ -123,16 +143,27 @@ aenv() {
       (
         # save original path at activation of the first env to correctly handle the case when
         # env is later changed from within this env
-        export ORIGINAL_PATH="$PATH"
         export PYENVNAME="$envname"
-        export PATH="$envdir/$envname/bin:$ORIGINAL_PATH"
+        if [ -z "$ENVCONTEXT" ]; then
+          export ENVCONTEXT="$envname"
+        else
+          export OLDCONTEXT="$ENVCONTEXT"
+          export ENVCONTEXT="$OLDCONTEXT>$envname"
+        fi
         unset PYTHONHOME
+        export ORIGINAL_PATH="$PATH"
+        export PATH="$envdir/$envname/bin:$ORIGINAL_PATH"
         exec $SHELL
       )
     else
       export PYENVNAME="$envname"
-      export PATH="$envdir/$envname/bin:$ORIGINAL_PATH"
+      if [ -z "$OLDCONTEXT" ]; then
+        export ENVCONTEXT="$envname"
+      else
+        export ENVCONTEXT="$OLDCONTEXT>$envname"
+      fi
       unset PYTHONHOME
+      export PATH="$envdir/$envname/bin:$ORIGINAL_PATH"
     fi
   fi
 }
