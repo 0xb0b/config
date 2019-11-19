@@ -63,10 +63,12 @@ menv() {
       projroot="$2"
     fi
     mkdir "$envdir/$envname"
+# write default nvim config file
 cat <<EOF >"$envdir/$envname/init.vim"
 let nvim_config_dir = stdpath("config")
 execute 'source '.globpath(nvim_config_dir, 'init.vim')
-let g:proj_root = "$projroot"
+let g:env_proj_name = "$envname"
+let g:env_proj_root = "$projroot"
 
 " add project configuration below
 EOF
@@ -105,11 +107,6 @@ aenv() {
     menv "$1"
   fi
 
-  # dbg temp
-  if [ -z "$ENVCONTEXT" ]; then
-    export ENVCONTEXT=""
-  fi
-
   if [ "$envdir" = "$vimenvdir" ]; then
     if [ -z "$VIMENVNAME" ]; then
       (
@@ -119,21 +116,25 @@ aenv() {
           export ENVCONTEXT="$envname"
         else
           export OLDCONTEXT="$ENVCONTEXT"
-          export ENVCONTEXT="$OLDCONTEXT>$envname"
+          export ENVCONTEXT="$OLDCONTEXT.$envname"
         fi
-        # TODO does not work
-        alias nvim="nvim -u $envdir/$envname/init.vim"
+        # TODO
+        echo "do something..."
+        # alias nvim="nvim -u $envdir/$envname/init.vim"
         exec $SHELL
       )
+      echo "undo what you have done..."
     else
+      # change the environment
       export VIMENVNAME="$envname"
       if [ -z "$OLDCONTEXT" ]; then
         export ENVCONTEXT="$envname"
       else
-        export ENVCONTEXT="$OLDCONTEXT>$envname"
+        export ENVCONTEXT="$OLDCONTEXT.$envname"
       fi
-      # TODO does not work
-      alias nvim="nvim -u $envdir/$envname/init.vim"
+      # TODO
+      echo "change..."
+      # alias nvim="nvim -u $envdir/$envname/init.vim"
     fi
     return 0
   fi
@@ -145,10 +146,10 @@ aenv() {
         # env is later changed from within this env
         export PYENVNAME="$envname"
         if [ -z "$ENVCONTEXT" ]; then
-          export ENVCONTEXT="$envname"
+          export ENVCONTEXT="$envtype/$envname"
         else
           export OLDCONTEXT="$ENVCONTEXT"
-          export ENVCONTEXT="$OLDCONTEXT>$envname"
+          export ENVCONTEXT="$OLDCONTEXT.$envtype/$envname"
         fi
         unset PYTHONHOME
         export ORIGINAL_PATH="$PATH"
@@ -158,9 +159,9 @@ aenv() {
     else
       export PYENVNAME="$envname"
       if [ -z "$OLDCONTEXT" ]; then
-        export ENVCONTEXT="$envname"
+        export ENVCONTEXT="$envtype/$envname"
       else
-        export ENVCONTEXT="$OLDCONTEXT>$envname"
+        export ENVCONTEXT="$OLDCONTEXT.$envtype/$envname"
       fi
       unset PYTHONHOME
       export PATH="$envdir/$envname/bin:$ORIGINAL_PATH"
