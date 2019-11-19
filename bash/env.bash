@@ -10,7 +10,10 @@ if [ ! -d "$ENVDIR" ]; then
   mkdir "$ENVDIR"
 fi
 
+export NVIMCONFIG="$HOME/.config/nvim/init.vim"
+
 vimenvdir="$ENVDIR/vim"
+# TODO do not automake type directories
 if [ ! -d "$vimenvdir" ]; then
   mkdir "$vimenvdir"
 fi
@@ -65,8 +68,7 @@ menv() {
     mkdir "$envdir/$envname"
 # write default nvim config file
 cat <<EOF >"$envdir/$envname/init.vim"
-let nvim_config_dir = stdpath("config")
-execute 'source '.globpath(nvim_config_dir, 'init.vim')
+source $( readlink $NVIMCONFIG )
 let g:env_proj_name = "$envname"
 let g:env_proj_root = "$projroot"
 
@@ -109,6 +111,8 @@ aenv() {
 
   if [ "$envdir" = "$vimenvdir" ]; then
     if [ -z "$VIMENVNAME" ]; then
+      # TODO what if init.vim is not a symlink?
+      export ORIGINAL_INIT_PATH="$( readlink $NVIMCONFIG )"
       (
         # start subshell for the first environment
         export VIMENVNAME="$envname"
@@ -118,12 +122,10 @@ aenv() {
           export OLDCONTEXT="$ENVCONTEXT"
           export ENVCONTEXT="$OLDCONTEXT.$envname"
         fi
-        # TODO
-        echo "do something..."
-        # alias nvim="nvim -u $envdir/$envname/init.vim"
+        ln -sf "$envdir/$envname/init.vim" $NVIMCONFIG
         exec $SHELL
       )
-      echo "undo what you have done..."
+      ln -sf $ORIGINAL_INIT_PATH $NVIMCONFIG
     else
       # change the environment
       export VIMENVNAME="$envname"
@@ -132,9 +134,7 @@ aenv() {
       else
         export ENVCONTEXT="$OLDCONTEXT.$envname"
       fi
-      # TODO
-      echo "change..."
-      # alias nvim="nvim -u $envdir/$envname/init.vim"
+      ln -sf "$envdir/$envname/init.vim" $NVIMCONFIG
     fi
     return 0
   fi
