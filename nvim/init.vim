@@ -39,7 +39,7 @@ filetype plugin indent on
 
 " grep
 if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading\ --hidden
+    set grepprg=rg\ --vimgrep\ --hidden
 endif
 
 augroup vimrc_autocmds
@@ -53,7 +53,7 @@ augroup vimrc_autocmds
 "  autocmd InsertLeave * set nocursorline
 
 " change to directory of the current buffer
-  autocmd BufEnter * cd %:p:h
+  " autocmd BufEnter * cd %:p:h
 
 " open quickfix window on grep
   autocmd QuickFixCmdPost grep cwindow
