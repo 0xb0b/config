@@ -46,5 +46,4 @@ let g:NERDCommentEmptyLines = 1
 
 " fzf
 let g:fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
-" open fzf window in the current split
-" let g:fzf_layout = { 'window': 'enew' }
+

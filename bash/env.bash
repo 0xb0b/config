@@ -1,9 +1,9 @@
 
 # environments management
 
+# https://datagrok.org/python/activate/
 # instead of "source <env path>/bin/activate"
 # start a subshell for the first env and replace the shell when env is changed
-# https://datagrok.org/python/activate/
 
 export ENVDIR="$HOME/.env"
 if [ ! -d "$ENVDIR" ]; then
@@ -12,24 +12,17 @@ fi
 
 export NVIMCONFIG="$HOME/.config/nvim/init.vim"
 
-vimenvdir="$ENVDIR/vim"
-# TODO do not automake type directories
-if [ ! -d "$vimenvdir" ]; then
-  mkdir "$vimenvdir"
-fi
+nvimenvdir="$ENVDIR/nvim"
 pyenvdir="$ENVDIR/python"
-if [ ! -d "$pyenvdir" ]; then
-  mkdir "$pyenvdir"
-fi
 
 
 lenv() {
   if [ -z "$1" ]; then
     # pipe to xargs to list only names without path
     ls "$ENVDIR/"* | xargs -n 1 basename
-  elif [ "$1" = "vim" ]; then
-    ls "$vimenvdir" -1
-  elif [ "$1" = "py" ]; then
+  elif [ "$1" = "nvim" ] && [ -d "$nvimenvdir" ]; then
+    ls "$nvimenvdir" -1
+  elif [ "$1" = "py" ] && [ -d "$pyenvdir" ]; then
     ls "$pyenvdir" -1
   fi
 }
@@ -38,20 +31,24 @@ menv() {
   if [ -z "$1" ]; then
     echo "make environment"
     echo "usage: menv [<type>/]<name> [<parameters>]"
-    echo "types: vim (default), python"
+    echo "types: nvim (default), python"
     echo "vim parameter: project root path (if not present then current dir is used)"
     return 0
   fi
 
   envname="$( basename "$1" )"
   envtype="$( dirname "$1" )"
-  if [ "$envtype" = "." ] || [ "$envtype" = "vim" ]; then
-    envdir="$vimenvdir"
+  if [ "$envtype" = "." ] || [ "$envtype" = "nvim" ]; then
+    envdir="$nvimenvdir"
   elif [ "$envtype" = "python" ]; then
     envdir="$pyenvdir"
   else
-    echo "unsupported environment type (can be [vim], python)"
+    echo "unsupported environment type (can be [nvim], python)"
     return 0
+  fi
+
+  if [ ! -d "$envdir" ]; then
+    mkdir "$envdir"
   fi
 
   if [ -d "$envdir/$envname" ]; then
@@ -59,11 +56,20 @@ menv() {
     return 0
   fi
 
-  if [ "$envdir" = "$vimenvdir" ]; then
+  if [ "$envdir" = "$nvimenvdir" ]; then
     if [ -z "$2" ]; then
       projroot="$( pwd )"
     else
-      projroot="$2"
+      if [ -d "$2" ]; then
+        # expand to full path
+        # https://stackoverflow.com/a/13087801/3001041
+        pushd "$2" >/dev/null
+        projroot="$( pwd )"
+        popd >/dev/null
+      else
+        echo "($2) does not exist!"
+        return 127
+      fi
     fi
     mkdir "$envdir/$envname"
 # write default nvim config file
@@ -88,28 +94,28 @@ aenv() {
   if [ -z "$1" ]; then
     echo "activate environment"
     echo "usage: aenv [<type>/]<name>"
-    echo "types: vim (default), python"
+    echo "types: nvim (default), python"
     return 0
   fi
 
   envname="$( basename "$1" )"
   envtype="$( dirname "$1" )"
-  if [ "$envtype" = "." ] || [ "$envtype" = "vim" ]; then
-    envdir="$vimenvdir"
+  if [ "$envtype" = "." ] || [ "$envtype" = "nvim" ]; then
+    envdir="$nvimenvdir"
   elif [ "$envtype" = "python" ]; then
     envdir="$pyenvdir"
   else
-    echo "unsupported environment type (can be [vim], python)"
+    echo "unsupported environment type (can be [nvim], python)"
     return 0
   fi
 
   # if environment does not exist then create it first
   if [ ! -d "$envdir/$envname" ]; then
-    echo "creating environment ($1) ..."
-    menv "$1"
+    echo "environment does not exist, create it first with menv"
+    return 0
   fi
 
-  if [ "$envdir" = "$vimenvdir" ]; then
+  if [ "$envdir" = "$nvimenvdir" ]; then
     if [ -z "$VIMENVNAME" ]; then
       # TODO what if init.vim is not a symlink?
       export ORIGINAL_INIT_PATH="$( readlink $NVIMCONFIG )"
@@ -173,18 +179,18 @@ renv() {
   if [ -z "$1" ]; then
     echo "remove environment"
     echo "usage: renv [<type>/]<name>"
-    echo "types: vim (default), python"
+    echo "types: nvim (default), python"
     return 0
   fi
 
   envname="$( basename "$1" )"
   envtype="$( dirname "$1" )"
   if [ "$envtype" = "." ] || [ "$envtype" = "vim" ]; then
-    envdir="$vimenvdir"
+    envdir="$nvimenvdir"
   elif [ "$envtype" = "python" ]; then
     envdir="$pyenvdir"
   else
-    echo "unsupported environment type (can be [vim], python)"
+    echo "unsupported environment type (can be [nvim], python)"
     return 0
   fi
 

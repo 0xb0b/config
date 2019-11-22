@@ -35,8 +35,6 @@ nnoremap <silent> <leader>/ :nohl<CR>
 nnoremap Q :qa<cr>
 
 " remap useful commands away from the numbers row
-nnoremap <leader>f *
-
 nnoremap <leader>e $
 vnoremap <leader>e $
 
@@ -44,8 +42,37 @@ nnoremap <leader>m %
 vnoremap <leader>m %
 
 " fzf
-nnoremap <leader>o :Files<cr>
-nnoremap <leader>b :Buffers<cr>
+function! s:fzf_open_in_project()
+  if exists("g:env_proj_root")
+    let dir = g:env_proj_root
+  else
+    let dir = expand("%:p:h")
+  endif
+  let command = 'fd --type f . '.dir
+  " #dbg
+  echom command
+
+  call fzf#run({
+        \ 'source': command,
+        \ 'sink': 'e',
+        \ 'options': '--multi --no-sort --cycle',
+        \ 'down':  '30%' })
+endfunction
+
+function! s:fzf_open_in_dir()
+  let dir = expand("%:p:h")
+  let command = 'fd --type f . '.dir
+
+  call fzf#run({
+        \ 'source': command,
+        \ 'sink': 'e',
+        \ 'options': '--multi --no-sort --cycle',
+        \ 'down':  '30%' })
+endfunction
+
+nnoremap <leader><Space> :call <sid>fzf_open_in_project()<cr>
+nnoremap <C-Space> :call <sid>fzf_open_in_dir()<cr>
+nnoremap <leader><Enter> :Buffers<cr>
 nnoremap <leader>; :Lines<cr>
 nnoremap <leader>l :BLines<cr>
 
