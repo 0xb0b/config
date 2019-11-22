@@ -45,5 +45,6 @@ let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 
 " fzf
+let g:fzf_layout = {'down': '~30%'}
 let g:fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
 

@@ -5,6 +5,8 @@
 # instead of "source <env path>/bin/activate"
 # start a subshell for the first env and replace the shell when env is changed
 
+# TODO remove unneeded quotes
+
 export ENVDIR="$HOME/.env"
 if [ ! -d "$ENVDIR" ]; then
   mkdir "$ENVDIR"
@@ -12,36 +14,51 @@ fi
 
 export NVIMCONFIG="$HOME/.config/nvim/init.vim"
 
-nvimenvdir="$ENVDIR/nvim"
-pyenvdir="$ENVDIR/python"
+nvim_envdir="$ENVDIR/nvim"
+py_envdir="$ENVDIR/python"
 
 
-lenv() {
-  if [ -z "$1" ]; then
-    # pipe to xargs to list only names without path
-    ls "$ENVDIR/"* | xargs -n 1 basename
-  elif [ "$1" = "nvim" ] && [ -d "$nvimenvdir" ]; then
-    ls "$nvimenvdir" -1
-  elif [ "$1" = "py" ] && [ -d "$pyenvdir" ]; then
-    ls "$pyenvdir" -1
+e() {
+  if [ -z "$NVIM_ENVNAME" ]; then
+    nvim $1
+  else
+    nvim -u $nvim_envdir/$NVIM_ENVNAME/init.vim $1
   fi
 }
 
-menv() {
+getname() {
+  envtype=$( dirname "$1" )
+  envname=$( basename "$1" )
+  echo $(basename "$envtype")/$envname
+}
+
+lsenv() {
+  if [ -z "$1" ]; then
+    # pipe to xargs to list only names without path
+    # ls "$ENVDIR/"* | xargs -n 1 basename
+    find $ENVDIR -maxdepth 2 -mindepth 2 -type d
+  elif [ "$1" = "nvim" ] && [ -d "$nvim_envdir" ]; then
+    ls "$nvim_envdir" -1
+  elif [ "$1" = "py" ] && [ -d "$py_envdir" ]; then
+    ls "$py_envdir" -1
+  fi
+}
+
+mkenv() {
   if [ -z "$1" ]; then
     echo "make environment"
-    echo "usage: menv [<type>/]<name> [<parameters>]"
+    echo "usage: mkenv [<type>/]<name> [<parameters>]"
     echo "types: nvim (default), python"
     echo "vim parameter: project root path (if not present then current dir is used)"
     return 0
   fi
 
-  envname="$( basename "$1" )"
-  envtype="$( dirname "$1" )"
+  envname=$( basename "$1" )
+  envtype=$( dirname "$1" )
   if [ "$envtype" = "." ] || [ "$envtype" = "nvim" ]; then
-    envdir="$nvimenvdir"
+    envdir="$nvim_envdir"
   elif [ "$envtype" = "python" ]; then
-    envdir="$pyenvdir"
+    envdir="$py_envdir"
   else
     echo "unsupported environment type (can be [nvim], python)"
     return 0
@@ -56,7 +73,7 @@ menv() {
     return 0
   fi
 
-  if [ "$envdir" = "$nvimenvdir" ]; then
+  if [ "$envdir" = "$nvim_envdir" ]; then
     if [ -z "$2" ]; then
       projroot="$( pwd )"
     else
@@ -84,7 +101,7 @@ EOF
     return 0
   fi
 
-  if [ "$envdir" = "$pyenvdir" ]; then
+  if [ "$envdir" = "$py_envdir" ]; then
     python3 -m venv --copies "$envdir/$envname"
     echo "done"
   fi
@@ -101,9 +118,9 @@ aenv() {
   envname="$( basename "$1" )"
   envtype="$( dirname "$1" )"
   if [ "$envtype" = "." ] || [ "$envtype" = "nvim" ]; then
-    envdir="$nvimenvdir"
+    envdir="$nvim_envdir"
   elif [ "$envtype" = "python" ]; then
-    envdir="$pyenvdir"
+    envdir="$py_envdir"
   else
     echo "unsupported environment type (can be [nvim], python)"
     return 0
@@ -111,46 +128,41 @@ aenv() {
 
   # if environment does not exist then create it first
   if [ ! -d "$envdir/$envname" ]; then
-    echo "environment does not exist, create it first with menv"
+    echo "environment does not exist, create it first with mkenv"
     return 0
   fi
 
-  if [ "$envdir" = "$nvimenvdir" ]; then
-    if [ -z "$VIMENVNAME" ]; then
-      # TODO what if init.vim is not a symlink?
-      export ORIGINAL_INIT_PATH="$( readlink $NVIMCONFIG )"
+  if [ "$envdir" = "$nvim_envdir" ]; then
+    if [ -z "$NVIM_ENVNAME" ]; then
       (
         # start subshell for the first environment
-        export VIMENVNAME="$envname"
+        export NVIM_ENVNAME="$envname"
         if [ -z "$ENVCONTEXT" ]; then
           export ENVCONTEXT="$envname"
         else
           export OLDCONTEXT="$ENVCONTEXT"
           export ENVCONTEXT="$OLDCONTEXT.$envname"
         fi
-        ln -sf "$envdir/$envname/init.vim" $NVIMCONFIG
         exec $SHELL
       )
-      ln -sf $ORIGINAL_INIT_PATH $NVIMCONFIG
     else
       # change the environment
-      export VIMENVNAME="$envname"
+      export NVIM_ENVNAME="$envname"
       if [ -z "$OLDCONTEXT" ]; then
         export ENVCONTEXT="$envname"
       else
         export ENVCONTEXT="$OLDCONTEXT.$envname"
       fi
-      ln -sf "$envdir/$envname/init.vim" $NVIMCONFIG
     fi
     return 0
   fi
 
-  if [ "$envdir" = "$pyenvdir" ]; then
-    if [ -z "$PYENVNAME" ]; then
+  if [ "$envdir" = "$py_envdir" ]; then
+    if [ -z "$PY_ENVNAME" ]; then
       (
         # save original path at activation of the first env to correctly handle the case when
         # env is later changed from within this env
-        export PYENVNAME="$envname"
+        export PY_ENVNAME="$envname"
         if [ -z "$ENVCONTEXT" ]; then
           export ENVCONTEXT="$envtype/$envname"
         else
@@ -163,7 +175,7 @@ aenv() {
         exec $SHELL
       )
     else
-      export PYENVNAME="$envname"
+      export PY_ENVNAME="$envname"
       if [ -z "$OLDCONTEXT" ]; then
         export ENVCONTEXT="$envtype/$envname"
       else
@@ -175,10 +187,10 @@ aenv() {
   fi
 }
 
-renv() {
+rmenv() {
   if [ -z "$1" ]; then
     echo "remove environment"
-    echo "usage: renv [<type>/]<name>"
+    echo "usage: rmenv [<type>/]<name>"
     echo "types: nvim (default), python"
     return 0
   fi
@@ -186,9 +198,9 @@ renv() {
   envname="$( basename "$1" )"
   envtype="$( dirname "$1" )"
   if [ "$envtype" = "." ] || [ "$envtype" = "vim" ]; then
-    envdir="$nvimenvdir"
+    envdir="$nvim_envdir"
   elif [ "$envtype" = "python" ]; then
-    envdir="$pyenvdir"
+    envdir="$py_envdir"
   else
     echo "unsupported environment type (can be [nvim], python)"
     return 0
@@ -197,7 +209,7 @@ renv() {
   if [ -d "$envdir/$envname" ]; then
     rm -rf "$envdir/$envname"
     echo "done"
-    if [ "$VIMENVNAME" = "$envname" ] || [ "$PYENVNAME" = "$envname" ]; then
+    if [ "$NVIM_ENVNAME" = "$envname" ] || [ "$PY_ENVNAME" = "$envname" ]; then
       # if removing the active env then quit it
       exit 0
     fi
