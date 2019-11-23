@@ -16,13 +16,15 @@ py_envdir=$ENVDIR/python
 
 e() {
   if [[ -z $NVIM_ENVNAME ]]; then
-    nvim $1
+    sessiondir=$NVIM_ENVDIR
   else
-    if [[ -f $NVIM_ENVDIR/$NVIM_ENVNAME/session.vim ]]; then
-      nvim -u $NVIM_ENVDIR/init.vim -S $NVIM_ENVDIR/$NVIM_ENVNAME/session.vim $1
-    else
-      nvim -u $NVIM_ENVDIR/init.vim $1
-    fi
+    sessiondir=$NVIM_ENVDIR/$NVIM_ENVNAME
+  fi
+
+  if [[ -f $sessiondir/session.vim ]]; then
+    nvim -u $NVIM_ENVDIR/init.vim -S $sessiondir/session.vim $1
+  else
+    nvim -u $NVIM_ENVDIR/init.vim $1
   fi
 }
 
