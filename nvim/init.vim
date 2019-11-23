@@ -64,7 +64,6 @@ let g:python3_host_prog = $ENVDIR.'/python/neovim/bin/python'
 
 " config directory variable
 let g:nvim_config_dir = stdpath("config")
-
 execute 'source '.globpath(nvim_config_dir, 'mappings.vim')
 execute 'source '.globpath(nvim_config_dir, 'plugins.vim')
 

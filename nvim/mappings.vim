@@ -48,6 +48,3 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>; :Lines<cr>
 nnoremap <leader>l :BLines<cr>
 
-" TODO should it be here?
-command! Env :echo 'env: '.$NVIM_ENVNAME
-

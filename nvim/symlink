@@ -2,9 +2,13 @@
 
 srcdir=$HOME/config/nvim
 targetdir=$HOME/.config/nvim
-
 mkdir -p $targetdir
 ln -sf $srcdir/init.vim $targetdir/init.vim
 ln -sf $srcdir/mappings.vim $targetdir/mappings.vim
 ln -sf $srcdir/plugins.vim $targetdir/plugins.vim
+
+srcdir=$HOME/config/nvim/env
+targetdir=$NVIM_ENVDIR
+mkdir -p $targetdir
+ln -sf $srcdir/init.vim $targetdir/init.vim
 
