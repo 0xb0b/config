@@ -8,6 +8,7 @@ if !empty($NVIM_ENVNAME)
   command! Env :echo 'env: '.$NVIM_ENVNAME.' @ '.g:env_proj_root
 else
   let g:env_proj_root = $HOME
+  command! Env :echo 'env: -'
 endif
 
 set sessionoptions-=blank sessionoptions+=resize sessionoptions+=winpos
