@@ -3,8 +3,6 @@
 # instead of "source <env path>/bin/activate"
 # start a subshell for the first env and replace the shell when env is changed
 
-# TODO remove unneeded quotes
-
 export ENVDIR=$HOME/.env
 if [[ ! -d $ENVDIR ]]; then
   mkdir $ENVDIR
