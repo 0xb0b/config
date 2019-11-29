@@ -3,6 +3,7 @@
 - add mappings to mappings.vim
 - set max number of the open file descriptors
   > ulimit -n 32768
+
 per project:
   - add settings.json to <env path>/ccls
 
