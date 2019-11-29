@@ -9,10 +9,11 @@ if empty(glob(plug_path))
 endif
 
 call plug#begin(plugged_path)
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': './install.sh'}
 Plug 'morhetz/gruvbox'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 call plug#end()
@@ -25,11 +26,15 @@ colorscheme gruvbox
 let g:gruvbox_italic=0  " turn off italic in terminal
 let g:gruvbox_contrast_dark="soft"
 
+" fzf
+let g:fzf_layout = {'down': '~30%'}
+let g:fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
+
 " nerdcommenter
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 
-" fzf
-let g:fzf_layout = {'down': '~30%'}
-let g:fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
+" LanguageClient
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_windowLogMessageLevel = "Warning"
 
