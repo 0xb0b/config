@@ -1,0 +1,24 @@
+- install language server and plugin
+- add generic client settings to plugins.vim
+- add mappings to mappings.vim
+- set max number of the open file descriptors
+  > ulimit -n 32768
+per project:
+  - add settings.json to <env path>/ccls
+
+{
+  "initializationOptions": {
+    "cache": {
+      "directory": "<env path>/ccls"
+    },
+    "compilationDatabaseDirectory": "<project build path>"
+  }
+}
+
+  - add client project settings to <env path>/init.vim (server commands and settigs path)
+
+let g:LanguageClient_serverCommands = {
+    \ 'cpp': ['ccls', '--log-file=/tmp/ccls.log'],
+    \ 'cuda': ['ccls', '--log-file=/tmp/ccls.log'] }
+let g:LanguageClient_settingsPath = $NVIM_ENVDIR.'/'.$NVIM_ENVNAME.'/ccls/settings.json'
+
