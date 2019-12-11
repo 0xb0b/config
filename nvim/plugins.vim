@@ -9,13 +9,15 @@ if empty(glob(plug_path))
 endif
 
 call plug#begin(plugged_path)
+Plug '0xb0b/imfocus.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': './install.sh'}
-Plug 'morhetz/gruvbox'
-Plug 'yuttie/comfortable-motion.vim'
-Plug 'scrooloose/nerdcommenter'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'morhetz/gruvbox'
+Plug 'm-pilia/vim-ccls'
+Plug 'scrooloose/nerdcommenter'
+Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
 
@@ -29,6 +31,9 @@ let g:gruvbox_contrast_dark="soft"
 " fzf
 let g:fzf_layout = {'down': '~30%'}
 let g:fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
+
+" imfocus
+let g:imfocus_size = 1
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1

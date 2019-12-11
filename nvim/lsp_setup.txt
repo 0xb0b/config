@@ -19,7 +19,7 @@ per project:
   - add client project settings to <env path>/init.vim (server commands and settigs path)
 
 let g:LanguageClient_serverCommands = {
-    \ 'cpp': ['ccls', '--log-file=/tmp/ccls.log'],
-    \ 'cuda': ['ccls', '--log-file=/tmp/ccls.log'] }
+    \ 'cpp': ['ccls', '--log-file='.$NVIM_ENVDIR.'/'.$NVIM_ENVNAME.'/ccls/ccls.log'],
+    \ 'cuda': ['ccls', '--log-file='.$NVIM_ENVDIR.'/'.$NVIM_ENVNAME.'/ccls/ccls.log'] }
 let g:LanguageClient_settingsPath = $NVIM_ENVDIR.'/'.$NVIM_ENVNAME.'/ccls/settings.json'
 

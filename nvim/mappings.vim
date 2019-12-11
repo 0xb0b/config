@@ -63,6 +63,7 @@ nnoremap <silent> <leader>r :call LanguageClient#textDocument_references({'inclu
 " TODO does not work, LanguageClient does not understand ccls response?
 nnoremap <silent> <leader>S :call LanguageClient#textDocument_documentSymbol()<CR>
 " TODO use plugin to make this into hierarchycal list
-nnoremap <silent> <leader>c :call LanguageClient#findLocations({'method':'$ccls/call'})<CR>
-"nnoremap <silent> <leader>C :call LanguageClient#findLocations({'method':'$ccls/call','callee':v:true})<CR>
+" (hierarchy parameter does not work with LanguageClient, requires vim-ccls plugin)
+nnoremap <silent> <leader>c :CclsCallHierarchy<CR>
+" nnoremap <silent> <leader>c :call LanguageClient#findLocations({'method':'$ccls/call'})<CR>
 
