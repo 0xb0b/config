@@ -9,7 +9,8 @@ if empty(glob(plug_path))
 endif
 
 call plug#begin(plugged_path)
-Plug '0xb0b/imfocus.nvim', {'do': ':UpdateRemotePlugins'}
+" Plug '0xb0b/imfocus.nvim', {'do': ':UpdateRemotePlugins'}
+Plug '/home/xbob/proj/nvim/imfocus.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': './install.sh'}
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
@@ -34,6 +35,7 @@ let g:fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
 
 " imfocus
 let g:imfocus_size = 1
+let g:imfocus_soft_shadow_size = 4
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1

@@ -35,7 +35,7 @@ tnoremap <A-l> <C-\><C-n><C-w>l
 tnoremap <A-c> <C-\><C-n><C-w>c
 
 " quick nohighlight
-nnoremap <silent> <leader>/ :nohl<CR>
+nnoremap <silent> <leader>h :nohl<CR>
 
 " quick quit
 nnoremap Q :qa<cr>
