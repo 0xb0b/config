@@ -9,6 +9,10 @@ if [[ ! -d $ENVDIR ]]; then
 fi
 
 export NVIM_ENVDIR=$ENVDIR/nvim
+if [[ ! -d $NVIM_ENVDIR ]]; then
+  mkdir $NVIM_ENVDIR
+fi
+
 py_envdir=$ENVDIR/python
 
 
