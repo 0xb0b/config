@@ -3,7 +3,7 @@
 # "known good" one, and is thus ignoring any changes you made to your local
 # environment. The env command sets the PATH variable in the environment of
 # the command to be executed
-alias psudo='sudo env PATH="$PATH"'
+alias esudo='sudo env HOME="$HOME" PATH="$PATH"'
 
 alias h="history"
 

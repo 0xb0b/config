@@ -1,0 +1,7 @@
+#!/bin/bash
+
+srcdir=$HOME/config/notebook_nvidia
+targetdir=/etc/X11/xorg.conf.d
+
+ln -sf $srcdir/10-gpu.conf $targetdir/10-gpu.conf
+

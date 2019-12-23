@@ -8,7 +8,6 @@ manjaro install
       # force sync the database (even it is up to date)
 
   install fonts:
-    liberation
     monaco
 
   install chrome
@@ -17,11 +16,11 @@ manjaro install
 
   install neovim (fzf installed as plugin)
 
+  install ripgrep, fd
+
   install redshift
 
   install rofi (?)
-
-  install ripgrep
 
   manjaro xfce
     Mac theme
@@ -56,12 +55,31 @@ manjaro install
 
   issues
     setting monospace system font has no effect
-      works through config: ~/.config/fontconfig/fonts.conf
+      works through config:
+        symlink from config repo to ~/.config/fontconfig/fonts.conf
+          after this <Custom font: Monospace Regular> is the configured font in
+          gnome terminal settings
 
     enable bluetooth at startup (before login)
       edit /etc/bluetooth/main.conf
         AutoEnable=true
 
+    multimonitor configuration on laptop with nvidia discrete graphics
+      it may happen for a laptop with hybrid graphics that the laptop screen is
+      wired to the integrated graphics while the external monitor is wired to
+      the discrete graphics.
+      there are two variants:
+        1. auto install proprietary nvidia driver, selects hybrid configuration;
+           external monitor does not work, needs an additional intel tool.
+           (not checked!)
+        2. install proprietary nvidia driver, discrete gpu only
+           (use Manjaro Settings Manager -> Hardware Configuration)
+           laptop screen does not work, needs the config file,
+           symlink from config/notebook_nvidia
+           see the description of this config here:
+             https://download.nvidia.com/XFree86/Linux-x86_64/418.30/README/randr14.html
+           BusID of nvidia device is smth like "PCI:1:0:0",
+           check it in Nvidia X Server Settings
 
 
 
