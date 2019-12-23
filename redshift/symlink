@@ -3,5 +3,7 @@
 srcdir=$HOME/config/redshift
 targetdir=$HOME/.config/redshift
 
+mkdir -p $targetdir
+
 ln -sf $srcdir/redshift.conf $targetdir/redshift.conf
 

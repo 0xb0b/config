@@ -15,13 +15,13 @@ manjaro install
 
   clone config repo (configuration for git, bash, nvim etc)
 
-  install neovim
+  install neovim (fzf installed as plugin)
 
   install redshift
 
   install rofi (?)
 
-  install fzf, ripgrep
+  install ripgrep
 
   manjaro xfce
     Mac theme
