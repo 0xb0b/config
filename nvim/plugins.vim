@@ -17,8 +17,9 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'm-pilia/vim-ccls'
+Plug 'psliwka/vim-smoothie'
 Plug 'scrooloose/nerdcommenter'
-Plug 'yuttie/comfortable-motion.vim'
+" Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
 
@@ -36,6 +37,7 @@ let g:fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
 " imfocus
 let g:imfocus_size = 1
 let g:imfocus_soft_shadow_size = 4
+let g:imfocus_shadow_color = 0x333399
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1
