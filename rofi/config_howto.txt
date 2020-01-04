@@ -1,0 +1,6 @@
+add shortcuts:
+  rofi -show run -> ctrl-j
+  rofi -show window -window-format '{c} {t}' -> ctrl-k
+
+themes:
+  > rofi-theme-selector

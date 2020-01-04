@@ -15,6 +15,9 @@ manjaro install
   clone config repo (configuration for git, bash, nvim etc)
 
   install neovim (fzf installed as plugin)
+    > mkenv python/neovim
+    > aenv python/neovim
+    > pip install neovim
 
   install ripgrep, fd
 
@@ -45,7 +48,8 @@ manjaro install
     https://github.com/Mayccoll/Gogh
 
   install python-pip (python2-pip ?)
-    > mkdir ~/.python_venv
+
+  setup env (?)
 
   install pycharm
 
@@ -103,7 +107,7 @@ manjaro reinstall
   add bash configs to .bashrc
 
   copy data and settings from old home (/home/<user>_backup):
-    .python_venv/
+    .env/
     .themes/
       remove the contents
     .config/nvim/

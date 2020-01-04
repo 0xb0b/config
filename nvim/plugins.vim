@@ -37,7 +37,7 @@ let g:fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
 " imfocus
 let g:imfocus_size = 1
 let g:imfocus_soft_shadow_size = 4
-let g:imfocus_shadow_color = 0x333399
+" let g:imfocus_shadow_color = 0x333399
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1
