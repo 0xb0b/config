@@ -11,7 +11,7 @@ configuration {
 #window {
     fullscreen:  true;
     transparency:  "real";
-    background-color: #020314E8; /*base00 + CC (80% opacity)*/
+    background-color: #020314E8; // RGBA
     children:  [dummytop, container, dummybottom];
     orientation: vertical;
 }
