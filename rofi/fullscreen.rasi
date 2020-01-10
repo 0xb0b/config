@@ -1,0 +1,43 @@
+configuration {
+    show-icons: true;
+}
+
+// colors: https://www.colourlovers.com/palette/1741341/Cyberpunk_Roses
+* {
+    background-color: transparent;
+    text-color: #5932E6;
+}
+
+#window {
+    fullscreen:  true;
+    transparency:  "real";
+    background-color: #020314E8; /*base00 + CC (80% opacity)*/
+    children:  [dummytop, container, dummybottom];
+    orientation: vertical;
+}
+
+#container {
+    children:  [dummyleft, mainbox, dummyright];
+    orientation:  horizontal;
+}
+
+#mainbox {
+    spacing: 16px;
+    children: [inputbar, listview];
+}
+
+#prompt {
+    margin: 0px 0.3em 0em 0em ;
+}
+
+#listview {
+    spacing: 8px;
+}
+
+#dummytop, dummybottom, dummyleft, dummyright {
+    expand: true;
+}
+
+#element selected {
+    text-color: #B332E6;
+}
