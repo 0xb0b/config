@@ -9,8 +9,8 @@ if empty(glob(plug_path))
 endif
 
 call plug#begin(plugged_path)
-" Plug '0xb0b/imfocus.nvim', {'do': ':UpdateRemotePlugins'}
-Plug '/home/xbob/proj/nvim/imfocus.nvim', {'do': ':UpdateRemotePlugins'}
+" Plug '0xb0b/isee.nvim', {'do': ':UpdateRemotePlugins'}
+Plug '/home/xbob/proj/nvim/isee.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': './install.sh'}
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
@@ -34,10 +34,10 @@ let g:gruvbox_contrast_dark="soft"
 let g:fzf_layout = {'down': '~30%'}
 let g:fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
 
-" imfocus
-let g:imfocus_size = 1
-let g:imfocus_soft_shadow_size = 4
-" let g:imfocus_shadow_color = 0x333399
+" isee
+let g:isee_size = 1
+let g:isee_soft_shadow_size = 4
+" let g:isee_shadow_color = 0x333399
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1

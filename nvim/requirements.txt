@@ -1,0 +1,6 @@
+# requirements for neovim python environment
+
+neovim
+pytest
+pyinstrument
+
