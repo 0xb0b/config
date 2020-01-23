@@ -1,8 +1,13 @@
 #!/bin/bash
 
-srcdir=$HOME/config/rofi
+# get directory of this file as source directory
+pushd $( dirname $0 ) >/dev/null
+srcdir=$( pwd )
+popd >/dev/null
+
 targetdir=$HOME/.config/rofi
 mkdir -p $targetdir
+
 ln -sf $srcdir/config $targetdir/config
 ln -sf $srcdir/fullscreen.rasi $targetdir/fullscreen.rasi
 

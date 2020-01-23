@@ -1,8 +1,12 @@
 #!/bin/bash
 
-srcdir=$HOME/config/fontconfig
-targetdir=$HOME/.config/fontconfig
+# get directory of this file as source directory
+pushd $( dirname $0 ) >/dev/null
+srcdir=$( pwd )
+popd >/dev/null
 
+targetdir=$HOME/.config/fontconfig
 mkdir -p $targetdir
+
 ln -sf $srcdir/fonts.conf $targetdir/fonts.conf
 
