@@ -1,5 +1,10 @@
 let mapleader=" "
 
+" insert blank lines in normal mode without moving the cursor
+" https://vi.stackexchange.com/a/3881/4818
+nnoremap <silent> <CR> :<C-u>call append(line('.'), repeat([''], v:count1))<CR>
+nnoremap <silent> <leader><CR> :<C-u>call append(line('.') - 1, repeat([''], v:count1))<CR>
+
 " list the buffers and be ready to switch
 "nnoremap <leader>b :ls<CR>:b<Space>
 
