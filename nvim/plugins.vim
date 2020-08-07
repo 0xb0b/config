@@ -1,7 +1,7 @@
 
 " auto-install vim-plug
-let plug_path = nvim_config_dir.'/autoload/plug.vim'
-let plugged_path = nvim_config_dir.'/plugged'
+let plug_path = stdpath("config").'/autoload/plug.vim'
+let plugged_path = stdpath("config").'/plugged'
 
 if empty(glob(plug_path))
   execute '!curl -fLo '.plug_path.' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'

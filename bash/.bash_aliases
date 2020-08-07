@@ -6,7 +6,7 @@
 # alias esudo='sudo env HOME="$HOME" PATH="$PATH"'
 #
 # to keep all the environment variables use -E or --preserve-env
-alias esudo='sudo --preserve-env'
+alias esudo="sudo --preserve-env"
 
 alias h="history"
 
@@ -14,7 +14,8 @@ alias ls="ls -x --color --group-directories-first"
 
 alias ll="ls -AlF"
 
-
+# unset alias to avoid recursion (e.g. if this is sourced more than once)
+unalias cd 2>/dev/null
 cdls() {
   cd "$1" && ls -AF
 }

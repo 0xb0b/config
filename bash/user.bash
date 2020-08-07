@@ -1,4 +1,3 @@
-
 # prompt
 
 git_branch() {
@@ -17,12 +16,5 @@ git_dirty() {
   fi
 }
 
-ps1_context() {
-  if [ -n "$ENVCONTEXT" ]; then
-    echo "($ENVCONTEXT)"
-  fi
-}
-
-
-PS1="\n\[\e[00;32m\]\u@\h \[\e[00;33m\]\w \[\e[00m\]\$(git_branch)\[\e[01;31m\]\$(git_dirty)\[\e[00m\]\n\$(ps1_context)> "
+PS1="\n\[\e[00;32m\]\u@\h \[\e[00;33m\]\w \[\e[00m\]\$(git_branch)\[\e[01;31m\]\$(git_dirty)\[\e[00m\]\$(ps1_context)\n> "
 
