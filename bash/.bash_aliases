@@ -1,3 +1,8 @@
+# https://mhoffman.github.io/2015/05/21/how-to-navigate-directories-with-the-shell.html
+# command completion from history
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
 # https://askubuntu.com/questions/66498/setting-tex-live-path-for-root
 # sudo resets the value of $PATH (the whole environment, indeed) to a
 # "known good" one, and is thus ignoring any changes you made to your local
