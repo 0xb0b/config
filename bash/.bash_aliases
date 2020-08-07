@@ -25,5 +25,5 @@ alias cd="cdls"
 
 alias c="clear"
 
-alias :q="exit"
+alias :q="exit &>/dev/null"
 
