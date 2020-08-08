@@ -31,6 +31,7 @@ cdls() {
 }
 
 alias cd="cdls"
+alias ..="cdls .."
 
 
 alias c="clear"
