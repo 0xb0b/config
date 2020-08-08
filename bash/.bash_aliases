@@ -22,7 +22,12 @@ alias ll="ls -AlF"
 # unset alias to avoid recursion (e.g. if this is sourced more than once)
 unalias cd 2>/dev/null
 cdls() {
-  cd "$1" && ls -AF
+  if [[ -z $1 ]]; then
+    directory=$HOME
+  else
+    directory="$1"
+  fi
+  cd $directory && ls -AF
 }
 
 alias cd="cdls"
