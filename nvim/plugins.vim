@@ -15,6 +15,7 @@ Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': './install.sh'}
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
+Plug '/home/xbob/proj/nvim/still_colored'
 Plug 'morhetz/gruvbox'
 Plug 'm-pilia/vim-ccls'
 Plug 'psliwka/vim-smoothie'
@@ -26,7 +27,7 @@ call plug#end()
 " colors:
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme still_colored
 let g:gruvbox_italic=0  " turn off italic in terminal
 let g:gruvbox_contrast_dark="soft"
 
