@@ -1,3 +1,9 @@
+eval $(keychain --eval id_ed25519)
+
+. ~/config/bash/.bash_aliases
+. ~/proj/envs/envs.bash
+. ~/config/bash/fzf.bash
+
 # prompt
 
 git_branch() {
