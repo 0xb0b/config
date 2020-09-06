@@ -22,7 +22,7 @@ set expandtab
 set colorcolumn=101
 
 " make tabs and trailing spaces visible
-set list listchars=tab:▸▸,trail:·
+set list listchars=tab:▸-,trail:·
 
 " Unix line endings only
 set fileformat=unix

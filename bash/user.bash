@@ -38,5 +38,5 @@ git_branch() {
   fi
 }
 
-PS1="\n${blue}\u@\h ${nocolor}\w  ${cyan}\$(git_branch)${nocolor}\$(ps1_context)\n> "
+PS1="\n${blue}\u@\h ${nocolor}\w  ${cyan}\$(git_branch)${nocolor}\$(ps1_context)\n▶ "
 
