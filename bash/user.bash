@@ -1,6 +1,6 @@
 . ~/config/bash/.bash_aliases
 
-. ~/config/bash/ssh.bash
+# . ~/config/bash/ssh.bash
 
 . ~/proj/envs/envs.bash
 
