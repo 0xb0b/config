@@ -8,6 +8,8 @@
 
 . ~/config/bash/prompt.bash
 
+. ~/config/bash/pyenv.bash
+
 
 EDITOR=nvim
 
