@@ -145,3 +145,6 @@ maintenance
   remove package:
     > pacman -Rns <pckg name>
 
+  remove package without checking for dependencies (to fix broken dependencies at update):
+    > pacman -Rdd <pckg name>
+
