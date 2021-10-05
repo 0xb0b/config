@@ -8,6 +8,6 @@ popd >/dev/null
 targetdir=$HOME/.config/rofi
 mkdir -p $targetdir
 
-ln -sf $srcdir/config $targetdir/config
+ln -sf $srcdir/config.rasi $targetdir/config.rasi
 ln -sf $srcdir/fullscreen.rasi $targetdir/fullscreen.rasi
 
