@@ -1,3 +1,2 @@
-configuration {
-  theme: "~/.config/rofi/fullscreen.rasi";
-}
+@theme "~/.config/rofi/fullscreen.rasi"
+

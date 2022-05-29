@@ -128,23 +128,26 @@ manjaro reinstall
 maintenance
 
   system update
-    > pacman -Syu
+    > sudo pacman -Syu
 
     after recreate mirrors list:
-      > pacman -Syyu
+      > sudo pacman -Syyu
 
   install packages
-    > pacman -Syu <pckg names>
+    > sudo pacman -Syu <pckg names>
 
   information about installed package:
-    > pacman -Qi <pckg name>
+    > sudo pacman -Qi <pckg name>
 
   remove orphans:
-    > pacman -Rns $(pacman -Qtdq)
+    > sudo pacman -Rns $(pacman -Qtdq)
 
   remove package:
-    > pacman -Rns <pckg name>
+    > sudo pacman -Rns <pckg name>
 
   remove package without checking for dependencies (to fix broken dependencies at update):
-    > pacman -Rdd <pckg name>
+    > sudo pacman -Rdd <pckg name>
+
+  refresh mirrors
+    > sudo shiny-mirrors refresh
 
