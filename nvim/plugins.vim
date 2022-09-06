@@ -17,9 +17,10 @@ Plug 'm-pilia/vim-ccls'
 " Plug 'yuttie/comfortable-motion.vim'
 Plug 'psliwka/vim-smoothie'
 Plug 'scrooloose/nerdcommenter'
-" Plug '0xb0b/isee.nvim', {'do': ':UpdateRemotePlugins'}
-Plug '/home/xbob/proj/nvim/isee.nvim', {'do': ':UpdateRemotePlugins'}
-Plug '/home/xbob/proj/nvim/still_colored'
+Plug '0xb0b/isee.nvim', {'do': ':UpdateRemotePlugins', 'branch': 'async_highlight_screen_rows'}
+" Plug '/home/xbob/proj/nvim/isee.nvim', {'do': ':UpdateRemotePlugins'}
+Plug '0xb0b/still_colored', {'branch': 'light_scheme_from_yt'}
+" Plug '/home/xbob/proj/nvim/still_colored'
 call plug#end()
 
 
