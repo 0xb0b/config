@@ -1,0 +1,9 @@
+# add to .bashrc:
+
+. ~/config/bash/.bash_aliases
+. ~/config/bash/user.bash
+
+# src specific features files:
+. ~/config/bash/env.bash
+. ~/config/bash/fzf.bash
+# etc
